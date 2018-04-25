@@ -1,3 +1,4 @@
 rootProject.name = 'tdd_template'
 include 'common'
+include 'webTemplate'
 
