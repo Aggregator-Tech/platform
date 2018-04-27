@@ -15,7 +15,7 @@ class ServerTest extends Specification {
         Server server = new Server();
         System.setProperty("server.port", "9500");
         then:
-        assert server.getBaseUri() == "http://0.0.0.0:9500/webTemplate/"
+        assert server.getBaseUri() == "http://0.0.0.0:9500/webTemplat/"
     }
 
 }
