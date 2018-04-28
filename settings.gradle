@@ -1,4 +1,4 @@
-rootProject.name = 'tdd_template'
+rootProject.name = 'platform'
 include 'common'
 include 'webTemplate'
 
