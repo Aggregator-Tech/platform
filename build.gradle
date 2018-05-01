@@ -4,7 +4,7 @@ subprojects {
 
     sourceCompatibility = 1.8
 
-    version '1.0-SNAPSHOT'
+    version '1.0'
     dependencies {
         testCompile "org.spockframework:spock-core:1.1-groovy-2.4-rc-2"
     }

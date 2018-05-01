@@ -1,23 +1,19 @@
 
 apply plugin: 'application'
 mainClassName = "webTemplate.service.Server"
-apply plugin: 'docker'
 
-buildscript {
-    repositories {
-        //this plugin will be pulled from jcenter
-        jcenter()
-    }
-    dependencies {
-        classpath 'se.transmode.gradle:gradle-docker:1.2'
-    }
+ext {
+    namespace='aggregatortech'
+    repository="webtemplate"
+    tag="$version"
 }
-docker {
-    baseImage "ubuntu"
-    maintainer 'Aggregator Tech "aggregatortech@gmail.com"'
-    useApi true
-    hostUrl 'http://192.168.99.100:2376'
+
+task distDocker(type: Exec) {
+    dependsOn installDist
+    executable 'sh'
+    args '-c', "docker build -t=${namespace}/${repository}:${tag} ."
 }
+
 dependencies {
     compile (
             [group: 'org.glassfish.jersey.containers', name: 'jersey-container-grizzly2-http', version:'2.26'],

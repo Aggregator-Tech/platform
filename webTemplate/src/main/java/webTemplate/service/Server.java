@@ -44,8 +44,4 @@ public class Server {
     public static void main(String[] args) throws IOException {
         Server server = new Server();
         final HttpServer httpServer = server.startServer();
-        System.out.println(String.format("Jersey app started with WADL available at "
-                + "%sapplication.wadl\nHit enter to stop it...", server.getBaseUri()));
-        System.in.read();
-        httpServer.stop();
     }}
