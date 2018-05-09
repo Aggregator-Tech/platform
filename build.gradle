@@ -1,6 +1,9 @@
 subprojects {
     apply plugin: 'groovy'
     apply plugin: 'java'
+    apply plugin: 'checkstyle'
+    apply plugin: 'pmd'
+    apply plugin: 'findbugs'
 
     sourceCompatibility = 1.8
 
@@ -12,8 +15,37 @@ subprojects {
             ['cglib:cglib:2.2'],
             ['org.objenesis:objenesis:2.2']
         )
-
     }
+
+    checkstyle {
+        configFile new File(rootDir, "/gradle/config/checkstyle.xml")
+    }
+
+    tasks.withType(Pmd){
+        reports{
+            xml.enabled=true
+            html.enabled=true
+        }
+    }
+
+    pmd {
+
+        ignoreFailures = true
+        pmdTest.enabled=false
+    }
+
+    findbugs{
+        ignoreFailures=true
+        findbugsTest.enabled=false
+    }
+
+    tasks.withType(FindBugs) {
+        reports {
+            xml.enabled = false
+            html.enabled = true
+        }
+    }
+
 }
 
 allprojects {
