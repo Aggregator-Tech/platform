@@ -1,18 +1,17 @@
 import hudson.plugins.git.*
 import hudson.plugins.git.extensions.impl.*
- stage('Build') {
-  node {
+ agent {
+  stage('Build') {
      shell "echo 'Building..'"
-     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Aggregator-Tech/platform.git']]])
-  }
-   //get the source code,  compile, run unit tests and buld artifacts
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Aggregator-Tech/platform.git']]])
+      //get the source code,  compile, run unit tests and buld artifacts
+ }
+ stage('Test') {
+    shell "echo 'Testing..'"
+ }
+ stage('Deploy') {
+    shell  "echo 'Deploying....'"
+ }
 }
-stage('Test') {
-   shell "echo 'Testing..'"
-}
-stage('Deploy') {
-   shell  "echo 'Deploying....'"
-}
-
 
 
