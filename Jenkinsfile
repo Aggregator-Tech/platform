@@ -11,6 +11,6 @@ stage('Test') {
 stage('Deploy') {
    shell  "echo 'Deploying....'"
 }
-}
+
 
 
