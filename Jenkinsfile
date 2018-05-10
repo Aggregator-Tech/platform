@@ -1,11 +1,11 @@
 stage('Build') {
-     echo 'Building..'
+    sh echo 'Building..'
  }
  stage('Test') {
-      echo 'Testing..'
+    sh echo 'Testing..'
  }
  stage('Deploy') {
-     echo 'Deploying....'
+    sh  echo 'Deploying....'
  }
 
 
