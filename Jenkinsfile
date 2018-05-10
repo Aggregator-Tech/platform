@@ -1,17 +1,11 @@
 stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-}
+     echo 'Building..'
+ }
+ stage('Test') {
+      echo 'Testing..'
+ }
+ stage('Deploy') {
+     echo 'Deploying....'
+ }
 
 
