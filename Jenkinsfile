@@ -1,7 +1,21 @@
-stage('checkout source') {
+pipeline {
+    agent any
 
-      // when running in multi-branch job, one must issue this command
-
-      checkout scm
-
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
 }
