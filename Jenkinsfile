@@ -5,9 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                node {
-                    scm checkout
-                }
+                gradlew build
             }
         }
         stage('Test') {
