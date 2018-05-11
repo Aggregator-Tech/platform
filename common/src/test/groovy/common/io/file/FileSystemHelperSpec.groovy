@@ -5,6 +5,6 @@ import spock.lang.Specification
 class FileSystemHelperSpec extends Specification {
     def 'Test getFile()'() {
         setup:
-        FileSystemHelper fileSystemHelper = new FileSystemHelpe();
+        FileSystemHelper fileSystemHelper = new FileSystemHelper();
     }
 }
