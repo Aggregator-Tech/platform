@@ -30,3 +30,12 @@ $gradlew run
 ## Testing
 * The url for the webTemplate app uses the pattern http://<host>:<port>/webTemplate/v1/about. eg http://localhost:9501/webTemplate/v1/about
 * For automated testing, Refer to https://github.com/Aggregator-Tech/platformIntegTest
+
+## Publishing
+### Docker Hub
+* $ docker login
+* $ docker push aggregatortech/webtemplate
+* Check the image in available in docker hub by visiting the repository url: https://hub.docker.com/r/aggregatortech/webtemplate/tags/
+* For more details, refer to https://docs.docker.com/docker-cloud/builds/push-images/
+
+
