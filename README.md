@@ -14,16 +14,16 @@ For webTemplate project, the executable application will be assembled under webT
 $ gradlew distDocker
 
 ## Execution
-### As stadalone application
+### As Stadalone Application
 $ sh webTemplate/build/install/webTemplate/bin/webTemplate
 * The default port will be 9501
 * To start the application on a different port set the java system property server.port by setting the WEB_TEMPLATE_OPTS environment variable before running the above command. For example, export WEB_TEMPLATE_OPTS=-Dserver.port=9500
 
-### Using docker:
+### Using Docker:
 * $docker run -p <exposed_port>:9501 aggregatortech/webtemplate:1.0
 * For example docker run -p 9500:9501 aggregatortech/webtemplate:1.0
 
-### Using gradle: 
+### Using Gradle: 
 $gradlew run
 
 
@@ -32,10 +32,13 @@ $gradlew run
 * For automated testing, Refer to https://github.com/Aggregator-Tech/platformIntegTest
 
 ## Publishing
-### Docker Hub
+### Using Docker
 * $ docker login
 * $ docker push aggregatortech/webtemplate
 * Check the image in available in docker hub by visiting the repository url: https://hub.docker.com/r/aggregatortech/webtemplate/tags/
 * For more details, refer to https://docs.docker.com/docker-cloud/builds/push-images/
 
-
+## Deployment
+### Using Docker
+* docker pull aggregatortech/webtemplate:1.0
+* To pull and run docker image in a single command, use the docker run command documented in the Execution section.
