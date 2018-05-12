@@ -16,3 +16,8 @@ allprojects {
     }
 
 }
+sourceSets {
+    integrationTest {
+       resources.srcDir file('src/integration-test/groovy/resources')
+    }
+}
