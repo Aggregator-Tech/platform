@@ -15,6 +15,7 @@ pipeline {
             steps {
                 echo 'Deploy to remote repo. Artifactory or docker hub '
                 sh  './gradlew installDist'
+                 sh  './gradlew distDocker'
                 
                 
                
