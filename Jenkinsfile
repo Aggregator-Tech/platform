@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploy to remote repo. Artifactory or docker hub '
+                echo 'Deploy to remote repo. Artifactory or docker hub. we will not publish it to artifactory/docker hub yet '
                 sh  './gradlew installDist'
                 
                 
@@ -23,7 +23,11 @@ pipeline {
         }
         stage('staging') {
             steps {
-                echo 'Run integ tests on staging env.Make a change in heroku repo so that heroku can pick up the change'
+                echo 'Commit to Heroku repo and that will trigger deploy on Heroku '
+                
+                echo 'Run integ tests on staging env.'
+                sh  './gradlew test'
+                
                 
             }
         }
