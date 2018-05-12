@@ -14,6 +14,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy to remote repo. Artifactory or docker hub '
+                sh  './gradlew installDist'
+                
                 
                
             }
@@ -21,7 +23,7 @@ pipeline {
         stage('staging') {
             steps {
                 echo 'Run integ tests on staging env.Make a change in heroku repo so that heroku can pick up the change'
-                sh  './gradlew integTest'
+                
             }
         }
   
