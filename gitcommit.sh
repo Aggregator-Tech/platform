@@ -1,8 +1,8 @@
-cd ..
-rm -rf heroku-platform
+#cd ..
+#rm -rf heroku-platform
 ssh -T git@github.com
-git clone git://github.com/aggregatortech/Aggregator-Tech/heroku-platform
-cd heroku-platform
+#git clone git://github.com/aggregatortech/Aggregator-Tech/heroku-platform
+cd ../heroku-platform
 git remote set-url origin git://github.com/aggregatortech/Aggregator-Tech/heroku-platform
 echo $PWD
 echo ${GIT_USERNAME}
