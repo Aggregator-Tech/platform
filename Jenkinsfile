@@ -17,7 +17,7 @@ pipeline {
                 sh  './gradlew installDist'
                 sh 'git clone https://github.com/Aggregator-Tech/heroku-platform'
                 sh 'echo $PWD'
-                sh 'git commit -m "Adding a change"
+                sh 'git commit -m "Adding a change"'
                 sh 'git push'
                
     }
