@@ -27,7 +27,7 @@ pipeline {
                             sh ('git config --global http.sslverify false')
                             sh ('git clone https://github.com/Aggregator-Tech/heroku-platform')
                             sh ('touch build.gradle')
-                            sh ('git add .')
+                            sh ('git add --all')
                             sh ('git commit -m "Add change "')
                             sh('git push origin master')
                    
