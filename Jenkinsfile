@@ -28,7 +28,7 @@ pipeline {
                             sh ('touch build.gradle')
                             sh ('git add .')
                             sh ('git commit -m "Add change"')
-                            sh('git push https://atul-aggregatortech:Westworld@1@heroku-platform.git')
+                            sh('git push --force https://atul-aggregatortech:Westworld@1@heroku-platform.git')
                     }
                }     
                 
