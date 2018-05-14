@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building code..'
+                echo 'Building code.. '
                 sh './gradlew build'
                 echo 'running unit tests'
                 sh  './gradlew test'
@@ -19,9 +19,11 @@ pipeline {
                 withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
                         
                         sh 'echo $PWD'
-                        sh 'cd ..'
+                       
                         sshagent (credentials: ['jenkins-git-cred']) {
-                             sh ('echo ${GIT_USERNAME}')
+                            
+                            sh 'cd ..'
+                            sh ('echo ${GIT_USERNAME}')
                             sh ('echo ${GIT_PASSWORD}')
                             sh (' git config --global user.name "atul-aggregatortech"')
                             sh (' git config --global user.email "atul.aggregatortech@gmail.com"')
