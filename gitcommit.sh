@@ -1,7 +1,7 @@
 #cd ..
 #rm -rf heroku-platform
 #ssh -T git@github.com
-#git clone  git://github.com/aggregatortech/Aggregator-Tech/heroku-platform
+git clone https://github.com/Aggregator-Tech/platform
 echo 'Path is ${PWD}'
 #cd ..
 echo 'Path is ${PWD}'
