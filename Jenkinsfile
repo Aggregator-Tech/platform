@@ -20,9 +20,10 @@ pipeline {
                     sh 'git clone https://github.com/Aggregator-Tech/heroku-platform'
                 }
                 sh 'echo $PWD'
-                sh "git commit -m 'Jenkins change'"
+                
                 withCredentials([usernamePassword(credentialsId: 'jenkins-git-cred', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh ('echo ${GIT_USERNAME}')
+                    sh "git commit -m 'Jenkins change'"
                     sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@heroku-platform.git')
                 }
                       
