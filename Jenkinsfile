@@ -19,7 +19,7 @@ pipeline {
                 withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
                         
                         sh 'echo $PWD'
-                        sshagent (credentials: ['git-ssh-credentials-ID']) {
+                        sshagent (credentials: ['jenkins-git-cred']) {
                              sh ('echo ${GIT_USERNAME}')
                             sh ('echo ${GIT_PASSWORD}')
                             sh (' git config --global user.name "atul-aggregatortech"')
