@@ -21,7 +21,7 @@ pipeline {
                         
                         sh 'echo $PWD'
                        
-                        sshagent (credentials: ['junk']) {
+                        sshagent (credentials: ['atul-aggregatortech']) {
                             
                             sh 'sh gitcommit.sh'
                            
