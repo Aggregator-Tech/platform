@@ -24,6 +24,7 @@ pipeline {
                             sh ('echo ${GIT_PASSWORD}')
                             sh (' git config --global user.name "atul-aggregatortech"')
                             sh (' git config --global user.email "atul.aggregatortech@gmail.com"')
+                            sh ('git config --global http.sslverify false')
                             sh ('git clone https://github.com/Aggregator-Tech/heroku-platform')
                             sh ('touch build.gradle')
                             sh ('git add .')
