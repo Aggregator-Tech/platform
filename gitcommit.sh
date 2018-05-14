@@ -18,4 +18,4 @@ git checkout master
 touch commitFile
 git add -A
 git commit -am "my update msg"
-git push git://github.com/aggregatortech/Aggregator-Tech/platform
+git push git://github.com/Aggregator-Tech/platform
