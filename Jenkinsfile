@@ -22,6 +22,8 @@ pipeline {
                         withCredentials([usernamePassword(credentialsId: 'jenkins-git-cred', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                             sh ('echo ${GIT_USERNAME}')
                             sh ('echo ${GIT_PASSWORD}')
+                            sh (' git config --global user.name "atul-aggregatortech"')
+                            sh (' git config --global user.email "atul.aggregatortech@gmail.com"')
                             sh ('git clone https://github.com/Aggregator-Tech/heroku-platform')
                             sh ('touch build.gradle')
                             sh ('git add .')
