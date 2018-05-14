@@ -19,13 +19,14 @@ pipeline {
                 withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
                         
                         sh 'echo $PWD'
+                        sh 'cd ..'
                         sshagent (credentials: ['jenkins-git-cred']) {
                              sh ('echo ${GIT_USERNAME}')
                             sh ('echo ${GIT_PASSWORD}')
                             sh (' git config --global user.name "atul-aggregatortech"')
                             sh (' git config --global user.email "atul.aggregatortech@gmail.com"')
                             sh ('git config --global http.sslverify false')
-                            sh ('git remote set-url origin https://github.com/Aggregator-Tech/heroku-platform')
+                            //sh ('git remote set-url origin https://github.com/Aggregator-Tech/heroku-platform')
                             sh ('git clone https://github.com/Aggregator-Tech/heroku-platform')
                             sh ('touch build.gradle')
                             sh ('git add --all')
