@@ -20,9 +20,7 @@ pipeline {
                 sh 'git commit -m "Adding a change"'
                 sh 'git push'
                
-    }
-}
-                
+         
                 
                 
                
