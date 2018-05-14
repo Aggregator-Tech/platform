@@ -22,8 +22,8 @@ pipeline {
                 sh 'echo $PWD'
                 sh "git commit -m 'Jenkins change'"
                 withCredentials([usernamePassword(credentialsId: 'jenkins-git-cred', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                   
-                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@<REPO> --tags')
+                    sh ('echo ${GIT_USERNAME}')
+                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@heroku-platform.git')
                 }
                       
                 
