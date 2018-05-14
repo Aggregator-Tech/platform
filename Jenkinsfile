@@ -16,17 +16,12 @@ pipeline {
                 echo 'Deploy to remote repo.   Artifactory or  docker hub. we will not publish it to artifactory/docker hub yet '
                 sh  './gradlew installDist'
                 
-                sshagent (credentials: ['20f5c48b-a570-4e38-84ed-66fdd4b85861']) {
-                            
-                            sh 'sh gitcommit.sh'
-                           
-                   
-                }
+                
                 withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
                         
                         sh 'echo $PWD'
                        
-                        sshagent (credentials: ['20f5c48b-a570-4e38-84ed-66fdd4b85861']) {
+                        sshagent (credentials: ['junk']) {
                             
                             sh 'sh gitcommit.sh'
                            
