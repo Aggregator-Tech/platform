@@ -25,11 +25,10 @@ pipeline {
                             sh (' git config --global user.name "atul-aggregatortech"')
                             sh (' git config --global user.email "atul.aggregatortech@gmail.com"')
                             sh ('git config --global http.sslverify false')
-                            sh ('git remote add origin https://github.com/Aggregator-Tech/heroku-platform')
                             sh ('git clone https://github.com/Aggregator-Tech/heroku-platform')
                             sh ('touch build.gradle')
                             sh ('git add .')
-                            sh ('git commit -m "Add change"')
+                            sh ('git commit -m "Add change "')
                             sh('git push --force https://atul-aggregatortech:Westworld@1@heroku-platform.git HEAD:master')
                     }
                }     
