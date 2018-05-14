@@ -13,7 +13,7 @@ echo ${GIT_PASSWORD}
 #git config --global user.email "atul.aggregatortech@gmail.com"
 #git config --global http.sslverify false
 git checkout master
-touch build.gradle
+touch commitFile
 git add -A
 git commit -am "my update msg"
 git push
