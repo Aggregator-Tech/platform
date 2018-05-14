@@ -13,6 +13,7 @@ echo ${GIT_PASSWORD}
 #git config --global user.email "atul.aggregatortech@gmail.com"
 #git config --global http.sslverify false
 git config --global http.proxy http://www-proxy.us.oracle.com:80
+git config --global https.proxy http://www-proxy.us.oracle.com:80
 git checkout master
 touch commitFile
 git add -A
