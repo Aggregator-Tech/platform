@@ -9,7 +9,7 @@ echo 'Path is ${PWD}'
 echo $PWD
 echo ${GIT_USERNAME}
 echo ${GIT_PASSWORD}
-export HTTPS_PROXY=http://www-proxy.yourcompany.com:80
+export HTTPS_PROXY=http://www-proxy.us.oracle.com:80
 git config --global user.name "atul-aggregatortech"
 git config --global user.email "atul.aggregatortech@gmail.com"
 #git config --global http.sslverify false
