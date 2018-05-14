@@ -1,4 +1,4 @@
-cd ..
+cd ../heroku-platform
 echo ${GIT_USERNAME}
 echo ${GIT_PASSWORD}
 git config --global user.name "atul-aggregatortech"
