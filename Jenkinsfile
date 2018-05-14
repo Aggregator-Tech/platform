@@ -21,7 +21,7 @@ pipeline {
                         
                         sh 'echo $PWD'
                        
-                        sshagent (credentials: ['d10188a6-d76f-48ff-be73-fb514a86b0b4']) {
+                        sshagent (credentials: ['d10188a6-d76f-48ff-be73-fb514a86b0b']) {
                             
                             sh 'sh gitcommit.sh'
                            
