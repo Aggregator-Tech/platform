@@ -29,7 +29,7 @@ pipeline {
                             sh ('touch build.gradle')
                             sh ('git add .')
                             sh ('git commit -m "Add change "')
-                            sh('git push --force https://atul-aggregatortech:Westworld@1@heroku-platform.git HEAD:master')
+                            sh('git push --force https://atul-aggregatortech:Westworld@1@github.com/Aggregator-Tech/heroku-platform.git HEAD:master')
                     }
                }     
                 
