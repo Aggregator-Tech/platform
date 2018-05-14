@@ -29,7 +29,7 @@ pipeline {
                             sh ('touch build.gradle')
                             sh ('git add --all')
                             sh ('git commit -m "Add change "')
-                            sh('git push')
+                            sh('git push origin HEAD:master')
                    
                         }
                         
