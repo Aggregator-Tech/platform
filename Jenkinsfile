@@ -15,7 +15,9 @@ pipeline {
             steps {
                 echo 'Deploy to remote repo. Artifactory or docker hub. we will not publish it to artifactory/docker hub yet '
                 sh  './gradlew installDist'
-                sh 'git clone https://github.com/Aggregator-Tech/heroku-platform'
+                withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
+                    sh 'git clone https://github.com/Aggregator-Tech/heroku-platform'
+                }
                 sh 'echo $PWD'
                 sh 'git commit -m "Adding a change"'
                 sh 'git push'
