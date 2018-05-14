@@ -20,7 +20,7 @@ pipeline {
                         
                         sh 'echo $PWD'
                        
-                        sshagent (credentials: ['jenkins-git-cred']) {
+                        sshagent (credentials: ['20f5c48b-a570-4e38-84ed-66fdd4b85861']) {
                             
                             sh 'sh gitcommit.sh'
                            
