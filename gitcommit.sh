@@ -1,6 +1,6 @@
 #git checkout master
 #git pull
-echo "new build" >> heroku-platform/commitFile
+echo "new build" >> commitFile
 git status
 git add -A
 git status
