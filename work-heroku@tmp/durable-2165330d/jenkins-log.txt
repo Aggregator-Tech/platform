@@ -1,3 +1,0 @@
-+ sh ../gitcommit.sh
-Path is  ${PWD}
-Cloning into 'heroku-platform'...
