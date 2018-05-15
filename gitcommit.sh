@@ -2,7 +2,7 @@
 #rm -rf heroku-platform
 #ssh -T git@github.com
 #git clone https://github.com/Aggregator-Tech/platform
-echo 'Path is ${PWD}'
+#echo 'Path is ${PWD}'
 #cd ..
 echo 'Path is ${PWD}'
 #git remote set-url origin aggregatortech@gmail.com://github.com/aggregatortech/Aggregator-Tech/heroku-platform
@@ -15,7 +15,7 @@ git config --global http.proxy http://www-proxy.us.oracle.com:80
 git config --global https.proxy http://www-proxy.us.oracle.com:80
 #git remote add origin https://aggregatortech:Westworld1@github.com/aggregatortech/Aggregator-Tech/platform
 git checkout master
-touch commitFile
+echo "new build" >> commitFile
 git add -A
 git commit -am "my update msg"
 git push
