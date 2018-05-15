@@ -6,7 +6,7 @@ This repository hosts the common components that can be assembled to develop an 
 $gradlew build
 
 ## Assembly
-### As stadalone  a pplication
+### As stadalone  application
 $ gradlew installDist
 * For webTemplate project, webTemplate/build/distributions directory will contain the binaries for the application pckages as zip and tar files. The  executable application will also be installed under webTemplate/build/install/webTemplate directory.
 
