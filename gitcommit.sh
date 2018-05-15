@@ -3,9 +3,10 @@
 #ssh -T git@github.com
 
 #echo 'Path is ${PWD}'
-#cd ..
+
 echo 'Path is  ${PWD}'
 rm -rf heroku-platform
+cd heroku-platform
 git remote set-url origin https://github.com/Aggregator-Tech/heroku-platform
 git remote add origin https://github.com/aggregatortech/Aggregator-Tech/heroku-platform
 
