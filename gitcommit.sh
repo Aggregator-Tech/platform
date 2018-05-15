@@ -21,7 +21,7 @@ git clone https://github.com/Aggregator-Tech/heroku-platform
 
 git checkout master
 git pull
-echo "new build" >> commitFile
+echo "new build" >> heroku-platform/commitFile
 git add -A
 git commit -am "my update msg"
 git push origin HEAD:master
