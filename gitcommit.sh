@@ -6,11 +6,8 @@
 
 echo 'Path is  ${PWD}'
 rm -rf heroku-platform
-cd heroku-platform
 git remote set-url origin https://github.com/Aggregator-Tech/heroku-platform
-git remote add origin https://github.com/aggregatortech/Aggregator-Tech/heroku-platform
-
-#echo $PWD
+git remote add origin https://github.com/Aggregator-Tech/heroku-platform
 git config --global credential.helper 'store --file /var/jenkins_home/git.store'
 git config --global user.name "aggregatortech"
 git config --global user.email "aggregatortech@gmail.com"
