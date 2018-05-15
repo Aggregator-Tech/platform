@@ -1,12 +1,7 @@
 pipeline {
     agent any
     node {
-        dir('Platform') {
-            git url: 'https://github.com/Aggregator-Tech/platform'
-        }
-        dir('heroku-platform') {
-            git url: 'https://github.com/Aggregator-Tech/heroku-platform'
-        }
+       
         stages {
             stage('Build') {
                 steps {
