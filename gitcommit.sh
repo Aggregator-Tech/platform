@@ -5,7 +5,8 @@ git clone https://github.com/Aggregator-Tech/heroku-platform
 #echo 'Path is ${PWD}'
 #cd ..
 echo 'Path is ${PWD}'
-#git remote set-url origin aggregatortech@gmail.com://github.com/aggregatortech/Aggregator-Tech/heroku-platform
+git remote set-url origin https://github.com/Aggregator-Tech/heroku-platform
+git clone https://github.com/Aggregator-Tech/heroku-platform
 #echo $PWD
 git config --global credential.helper 'store --file /var/jenkins_home/git.store'
 git config --global user.name "aggregatortech"
