@@ -23,6 +23,9 @@ pipeline {
                             sh 'rm -rf work-heroku'
                            sh 'mkdir work-heroku'
                            dir('work-heroku') {
+                             sh 'sh ../gitclone.sh'
+                            }
+                            dir('heroku-platform') {
                              sh 'sh ../gitcommit.sh'
                             }
 
