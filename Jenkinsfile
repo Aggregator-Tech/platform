@@ -23,7 +23,7 @@ pipeline {
                             sh 'rm -rf work-heroku'
                            sh 'mkdir work-heroku'
                            dir('work-heroku') {
-                             sh 'sh gitcommit.sh'
+                             sh 'sh ../gitcommit.sh'
                             }
 
                             
