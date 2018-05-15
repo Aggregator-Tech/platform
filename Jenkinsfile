@@ -20,11 +20,13 @@ pipeline {
 
                     withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
 
-                            sh 'echo $PWD'
+                           sh 'rm -rf heroku-platform'
+                           sh 'sh gitclone.sh'
+                           dir('heroku-platfrom') {
+                             sh 'sh gitcommit.sh'
+                            }
 
-                            sshagent (credentials: ['d10188a6-d76f-48ff-be73-fb514a86b0b4']) {
-
-                                sh 'sh gitcommit.sh ${workspace}'
+                            
 
 
                             }
