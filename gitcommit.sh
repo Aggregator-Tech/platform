@@ -24,4 +24,4 @@ git pull
 echo "new build" >> commitFile
 git add -A
 git commit -am "my update msg"
-git push
+git push origin HEAD:master
