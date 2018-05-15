@@ -14,6 +14,7 @@ rm -rf heroku-platform
 #git config --global http.sslverify false
 #git config --global http.proxy http://www-proxy.us.oracle.com:80
 #git config --global https.proxy http://www-proxy.us.oracle.com:80
+git init
 git clone https://github.com/Aggregator-Tech/heroku-platform
 git remote add origin https://github.com/Aggregator-Tech/heroku-platform
 
