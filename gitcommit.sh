@@ -14,11 +14,10 @@ git config --global user.email "aggregatortech@gmail.com"
 #git config --global http.sslverify false
 git config --global http.proxy http://www-proxy.us.oracle.com:80
 git config --global https.proxy http://www-proxy.us.oracle.com:80
-git init
 git clone https://github.com/Aggregator-Tech/heroku-platform
 
-git checkout master
-git pull
+#git checkout master
+#git pull
 echo "new build" >> heroku-platform/commitFile
 git add -A
 git commit -am "my update msg"
