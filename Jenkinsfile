@@ -20,9 +20,9 @@ pipeline {
 
                     withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
 
-                           sh 'rm -rf heroku-platform'
-                           sh 'sh gitclone.sh'
-                           dir('heroku-platfrom') {
+                            sh 'rm -rf work-heroku'
+                           sh 'mkdir work-heroku'
+                           dir('work-heroku') {
                              sh 'sh gitcommit.sh'
                             }
 
