@@ -14,7 +14,7 @@ git config --global user.email "aggregatortech@gmail.com"
 git config --global http.proxy http://www-proxy.us.oracle.com:80
 git config --global https.proxy http://www-proxy.us.oracle.com:80
 #git remote add origin https://aggregatortech:Westworld1@github.com/aggregatortech/Aggregator-Tech/platform
-git checkout master
+git pull
 echo "new build" >> commitFile
 git add -A
 git commit -am "my update msg"
