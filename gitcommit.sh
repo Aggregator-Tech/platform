@@ -10,6 +10,7 @@ echo $PWD
 echo ${GIT_USERNAME}
 echo ${GIT_PASSWORD}
 export HTTPS_PROXY=http://www-proxy.us.oracle.com:80
+ git config --global credential.helper 'store --file /var/jenkins_home/git.store'
 git config --global user.name "aggregatortech"
 git config --global user.email "aggregatortech@gmail.com"
 #git config --global http.sslverify false
@@ -20,4 +21,4 @@ git checkout master
 touch commitFile
 git add -A
 git commit -am "my update msg"
-git push https://atul-aggregatortech:Westworld1@Aggregator-Tech/platform.git
+git push
