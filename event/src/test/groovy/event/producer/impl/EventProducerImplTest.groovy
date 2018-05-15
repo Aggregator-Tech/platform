@@ -1,5 +1,6 @@
 package event.producer.impl
 
+import event.producer.EventProducer
 import org.apache.kafka.clients.producer.KafkaProducer
 import org.apache.kafka.clients.producer.ProducerRecord
 import spock.lang.Shared
@@ -18,7 +19,7 @@ class EventProducerImplTest extends Specification {
     def 'Test Publish Event'() {
         setup:
         KafkaProducer<String, String> mockKafkaProducer = Mock()
-        EventProducerImpl spyEventProducer = Spy(EventProducerImpl)
+        EventProducer spyEventProducer = Spy(EventProducerImpl)
 
         when:
         spyEventProducer.getKafkaProducer() >> mockKafkaProducer
