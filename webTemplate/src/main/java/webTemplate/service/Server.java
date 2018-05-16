@@ -17,7 +17,7 @@ public class Server {
 
     public String getBaseUri() {
         System.out.println("Port is"+System.getProperty("PORT"));
-        return String.format(BASE_URI, System.getProperty("server.port","9501"));
+        return String.format(BASE_URI, System.getProperty("PORT"));
     }
 
     /**
