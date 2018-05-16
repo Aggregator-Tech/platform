@@ -2,7 +2,7 @@ This repository hosts the common components that can be assembled to develop an 
 
 # Build instructions
 
-## Compile and run unit tests
+##  Compile and run unit tests
 $gradlew build
 
 ## Assembly
