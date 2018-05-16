@@ -8,12 +8,27 @@ ext {
     tag="$version"
 }
 
-/*task distDocker1(type: Exec) {
+task distDocker(type: Exec) {
     dependsOn installDist
     executable 'sh'
     args '-c', "docker build -t=${namespace}/${repository}:${tag} ."
 }
-*/
+
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integration-test/java')
+        }
+        resources.srcDir file('src/integration-test/resources')
+    }
+}
+task integration-tests {
+    doLast {
+        
+    }
+}
 task stage {
     doLast {
         println 'Hello world!'        
