@@ -8,11 +8,12 @@ ext {
     tag="$version"
 }
 
-task distDocker1(type: Exec) {
+/*task distDocker1(type: Exec) {
     dependsOn installDist
     executable 'sh'
     args '-c', "docker build -t=${namespace}/${repository}:${tag} ."
 }
+*/
 task stage {
     doLast {
         println 'Hello world!'        
