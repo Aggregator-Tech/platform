@@ -14,6 +14,7 @@ task stage {
         println 'Hello world!'        
     }
 }
+stage.dependsOn 'run'
 allprojects {
     repositories {
         jcenter()
