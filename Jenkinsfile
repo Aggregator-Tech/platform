@@ -26,7 +26,7 @@ pipeline {
                              sh 'sh ../gitclone.sh'
                             }
                             dir('work-heroku/heroku-platform') {
-                             sh 'sh ../gitcommit.sh'
+                             sh 'sh ../../gitcommit.sh'
                             }
 
                             
