@@ -16,6 +16,7 @@ public class Server {
     public static final String BASE_URI = "http://" + NetworkListener.DEFAULT_NETWORK_HOST + ":%s/webTemplate/";
 
     public String getBaseUri() {
+        System.out.println("Port is"+System.getProperty("PORT"));
         return String.format(BASE_URI, System.getProperty("server.port","9501"));
     }
 
