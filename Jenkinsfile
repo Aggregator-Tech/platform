@@ -2,7 +2,7 @@ pipeline {
     agent any
       parameters {
         string(name: 'platform_url', defaultValue: 'https://aggregatortech-platform.herokuapp.com', description: 'Platform url')
-        string(name:'proxy_url' , defaultValue: 'http://www-proxy.us.oracle.com:80', description: 'Proxy')
+        string(name: 'proxy_url' , defaultValue: 'http://www-proxy.us.oracle.com:80', description: 'Proxy')
     }
         stages {
             
@@ -19,7 +19,7 @@ pipeline {
             
             stage('Deploy') {
                 steps {
-                    withEnv(['HTTPS_PROXY=${proxy_url}']) {
+                    withEnv(['HTTPS_PROXY=${params.proxy_url}']) {
                             echo 'Deploy  to remote repo.  Artifactory or  docker hub. we will not publish it to artifactory/docker hub yet '
                             sh  './gradlew installDist'
                             sh 'rm -rf work-heroku'
@@ -37,7 +37,7 @@ pipeline {
                 steps {
                     echo 'Commit to Heroku repo and that will trigger deploy on Heroku '
                     echo 'Run integ tests on staging env.'
-                    sh  './gradlew -b integ/build.gradle -DbaseUrl=${platform_url} clean test'
+                    sh  './gradlew -b integ/build.gradle -DbaseUrl=${params.platform_url} clean test'
                 }
             }
 
