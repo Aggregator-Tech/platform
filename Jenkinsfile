@@ -33,12 +33,16 @@ pipeline {
                         
                     }  
                       }  
-                steps {
+               
+                }
+            stage ('verify') {
+                 steps {
                             def response = httpRequest "'${params.platform_url}'/webTemplate"
                             println("Status: "+response.status)
                             println("Content: "+response.content)
                         }
-                }
+                
+            }
             stage('staging') {
                 steps {
                     echo 'Commit to Heroku repo and that will trigger deploy on Heroku '
