@@ -37,19 +37,9 @@ pipeline {
                 }
             stage ('verify') {
                  steps {
-                     retry(3) {
-                        try {
-                             script {
-                                    def response = httpRequest "${params.platform_url}/webTemplate/v1/about"
-                                    println("Status: "+response.status)
-                                    println("Content: "+response.content)
-                                }  
-                            
-                        } catch (e) {
-                                sleep 5
-                                throw e
-                            }
-                     }
+                     waitUntil {
+                        sh 'timeout 120 wget --retry-connrefused --tries=10 --waitretry=1 -q ${params.platform_url}/webTemplate -O /dev/null'
+}
                  }
                 
             }
