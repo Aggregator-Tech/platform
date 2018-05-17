@@ -39,12 +39,13 @@ pipeline {
                  steps {
                      retry(3) {
                         try {
-                         script {
-                                def response = httpRequest "${params.platform_url}/webTemplate/v1/about"
-                                println("Status: "+response.status)
-                                println("Content: "+response.content)
-                            }  
-                            catch (e) {
+                             script {
+                                    def response = httpRequest "${params.platform_url}/webTemplate/v1/about"
+                                    println("Status: "+response.status)
+                                    println("Content: "+response.content)
+                                }  
+                            
+                        } catch (e) {
                                 sleep 5
                                 throw e
                             }
