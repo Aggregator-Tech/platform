@@ -2,5 +2,3 @@ rootProject.name = 'platform'
 include 'common'
 include 'webTemplate'
 include 'moduleTemplate'
-include 'integTests/webTemplate'
-
