@@ -11,8 +11,7 @@ pipeline {
                        echo "${params.proxy_url} World!"
                         echo 'Building code.. '
                         sh './gradlew build'
-                        echo 'running unit tests'
-                        sh  './gradlew test'
+                       
                       }
 
                 }
@@ -35,7 +34,7 @@ pipeline {
                       }  
                
                 }
-            stage ('verify') {
+            stage ('verifyDeployment') {
                  steps {
                     retry(3) {
                               script {
