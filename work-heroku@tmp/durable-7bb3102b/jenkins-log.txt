@@ -1,4 +1,0 @@
-+ sh ../gitcommit.sh
-Path is  ${PWD}
-Cloning into 'heroku-platform'...
-fatal: remote origin already exists.
