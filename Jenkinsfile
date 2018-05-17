@@ -1,6 +1,9 @@
 pipeline {
     agent any
-      
+      parameters {
+        string(platform_url: 'https://aggregatortech-platform.herokuapp.com', defaultValue: '', description: 'Platform url')
+        string(proxy_url: 'http://www-proxy.us.oracle.com:80', defaultValue: '', description: 'Proxy')
+    }
         stages {
             
             stage('Build') {
@@ -16,7 +19,7 @@ pipeline {
             
             stage('Deploy') {
                 steps {
-                    withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
+                    withEnv(['HTTPS_PROXY=${proxy_url}']) {
                             echo 'Deploy  to remote repo.  Artifactory or  docker hub. we will not publish it to artifactory/docker hub yet '
                             sh  './gradlew installDist'
                             sh 'rm -rf work-heroku'
