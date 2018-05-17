@@ -17,33 +17,28 @@ pipeline {
             }
             stage('Deploy') {
                 steps {
-                    echo 'Deploy  to remote repo.  Artifactory or  docker hub. we will not publish it to artifactory/docker hub yet '
-                    sh  './gradlew installDist'
+                        echo 'Deploy  to remote repo.  Artifactory or  docker hub. we will not publish it to artifactory/docker hub yet '
+                        sh  './gradlew installDist'
+                        withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
 
+                                sh 'rm -rf work-heroku'
+                               sh 'mkdir work-heroku'
+                               dir('work-heroku') {
+                                 sh 'sh ../gitclone.sh'
+                                }
+                                dir('work-heroku/heroku-platform') {
+                                 sh 'sh ../../gitcommit.sh'
+                                }
+                            script {
+                                    if (server_url == '') {
+                                                server_url = 'https://aggregatortech-platform.herokuapp.com/webTemplate/'
+                                     }
+                                    response = httpRequest "https://aggregatortech-platform.herokuapp.com/webTemplate/"
+                                    println('Status: '+response.status)
+                                    println('Response: '+response.content)
 
-                    withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
-
-                            sh 'rm -rf work-heroku'
-                           sh 'mkdir work-heroku'
-                           dir('work-heroku') {
-                             sh 'sh ../gitclone.sh'
-                            }
-                            dir('work-heroku/heroku-platform') {
-                             sh 'sh ../../gitcommit.sh'
-                            }
-                            server_url='https://aggregatortech-platform.herokuapp.com/webTemplate/'
-
-                            response = httpRequest "https://aggregatortech-platform.herokuapp.com/webTemplate/"
-                            println('Status: '+response.status)
-                            println('Response: '+response.content)
-
-
-                         
-
-                   }     
-
-
-
+                                 }
+                       }     
                 }
             }
             stage('staging') {
