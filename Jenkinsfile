@@ -5,10 +5,12 @@ pipeline {
         stages {
             stage('Build') {
                 steps {
-                    echo 'Building code.. '
-                    sh './gradlew build'
-                    echo 'running unit tests'
-                    sh  './gradlew test'
+                     withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
+                        echo 'Building code.. '
+                        sh './gradlew build'
+                        echo 'running unit tests'
+                        sh  './gradlew test'
+                    }
 
                 }
             }
