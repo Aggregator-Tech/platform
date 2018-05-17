@@ -37,7 +37,7 @@ pipeline {
                 steps {
                     echo 'Commit to Heroku repo and that will trigger deploy on Heroku '
                     echo 'Run integ tests on staging env.'
-                    sh  './gradlew -b integ/build.gradle -DbaseUrl=$server_url clean test'
+                    sh  './gradlew -b integ/build.gradle -DbaseUrl=${platform_url} clean test'
                 }
             }
 
