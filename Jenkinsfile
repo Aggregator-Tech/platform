@@ -2,7 +2,7 @@ pipeline {
     agent any
       
         stages {
-            withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
+            
             stage('Build') {
                 steps {
                     
@@ -16,6 +16,7 @@ pipeline {
             
             stage('Deploy') {
                 steps {
+                    withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
                             echo 'Deploy  to remote repo.  Artifactory or  docker hub. we will not publish it to artifactory/docker hub yet '
                             sh  './gradlew installDist'
                             sh 'rm -rf work-heroku'
@@ -26,7 +27,7 @@ pipeline {
                             dir('work-heroku/heroku-platform') {
                                  sh 'sh ../../gitcommit.sh'
                             }
-                            
+                    }  
                       }     
                 }
             stage('staging') {
