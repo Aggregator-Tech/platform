@@ -27,15 +27,7 @@ pipeline {
                                 dir('work-heroku/heroku-platform') {
                                  sh 'sh ../../gitcommit.sh'
                                 }
-                            script {
-                                    if (server_url == '') {
-                                                server_url = 'https://aggregatortech-platform.herokuapp.com/webTemplate/'
-                                     }
-                                    response = httpRequest "https://aggregatortech-platform.herokuapp.com/webTemplate/"
-                                    println('Status: '+response.status)
-                                    println('Response: '+response.content)
-
-                                 }
+                            
                        }     
                 }
             }
