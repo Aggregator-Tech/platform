@@ -65,6 +65,7 @@ pipeline {
             stage('Production') {
                 steps {
                     echo 'Deploy the prod env'
+                    input 'Do you want to deploy to the production env?'
                 }
             }
         }
