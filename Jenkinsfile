@@ -37,11 +37,21 @@ pipeline {
                 }
             stage ('verify') {
                  steps {
-                     waitUntil {
-                        sh "timeout 120 wget --retry-connrefused --tries=10 --waitretry=1 -q '${params.platform_url}'/webTemplate/v1/about -O /dev/null"
-}
+                    retry(3) {
+                              script {
+                                  try {
+                                    def response = httpRequest "${params.platform_url}/webTemplate/v1/about"
+                                    println("Status: "+response.status)
+                                    println("Content: "+response.content)
+                                  }
+                                  catch (e)
+                                  {
+                                      println("Status in error: "+response.status)
+                                    println("Content in error: "+response.content)
+                                }  
+                        
+                            }
                  }
-                
             }
             stage('staging') {
                 steps {
