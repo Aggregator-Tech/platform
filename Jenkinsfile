@@ -1,6 +1,8 @@
 pipeline {
     agent any
-     
+     environment { 
+        server_url = ''
+        }
         stages {
             stage('Build') {
                 steps {
@@ -29,8 +31,11 @@ pipeline {
                             dir('work-heroku/heroku-platform') {
                              sh 'sh ../../gitcommit.sh'
                             }
+                            server_url='https://aggregatortech-platform.herokuapp.com/webTemplate/'
 
-                            
+                            response = httpRequest "https://aggregatortech-platform.herokuapp.com/webTemplate/"
+                            println('Status: '+response.status)
+                            println('Response: '+response.content)
 
 
                          
@@ -46,7 +51,7 @@ pipeline {
                     echo 'Commit to Heroku repo and that will trigger deploy on Heroku '
 
                     echo 'Run integ tests on staging env.'
-                    sh  './gradlew -b integ/build.gradle -DbaseUrl=https://aggregatortech-platform.herokuapp.com/webTemplate/ clean test'
+                    sh  './gradlew -b integ/build.gradle -DbaseUrl=$server_url clean test'
 
 
                 }
