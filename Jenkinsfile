@@ -1,7 +1,8 @@
 pipeline {
     agent any
-      withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
+      
         stages {
+            withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
             stage('Build') {
                 steps {
                     
