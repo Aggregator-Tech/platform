@@ -38,7 +38,7 @@ pipeline {
             stage ('verify') {
                  steps {
                      script {
-                            def response = httpRequest "${params.platform_url}/webTemplate"
+                            def response = httpRequest "${params.platform_url}/webTemplate/v1/about"
                             println("Status: "+response.status)
                             println("Content: "+response.content)
                         }
