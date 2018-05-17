@@ -1,12 +1,10 @@
 pipeline {
     agent any
-     environment { 
-        server_url = ''
-        }
+      withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
         stages {
             stage('Build') {
                 steps {
-                     withEnv(['HTTPS_PROXY=http://www-proxy.us.oracle.com:80']) {
+                    
                         echo 'Building code.. '
                         sh './gradlew build'
                         echo 'running unit tests'
@@ -58,5 +56,5 @@ pipeline {
                 }
             }
         }
- 
+}
 }
