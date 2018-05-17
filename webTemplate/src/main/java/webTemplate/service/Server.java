@@ -16,8 +16,11 @@ public class Server {
     public static final String BASE_URI = "http://" + NetworkListener.DEFAULT_NETWORK_HOST + ":%s/webTemplate/";
 
     public String getBaseUri() {
-        System.out.println("Port is"+System.getProperty("PORT"));
-        return String.format(BASE_URI,  System.getProperty("server.port","9501"));
+        String port = System.getenv("PORT");
+        if (port == null  || port.isEmpty()) {
+            port =  System.getProperty("server.port","9501");
+        }
+        return String.format(BASE_URI, port);
     }
 
     /**
@@ -32,6 +35,7 @@ public class Server {
 
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI
+	    System.out.println("baseUri: " + getBaseUri());
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(getBaseUri()), rc);
     }
 
@@ -44,5 +48,5 @@ public class Server {
      */
     public static void main(String[] args) throws IOException {
         Server server = new Server();
-        final HttpServer httpServer = server.startServer();
+        server.startServer();
     }}
