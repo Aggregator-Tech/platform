@@ -1,6 +1,6 @@
 This repository hosts the common components that can be assembled to develop an reactive microservices based application.
 
-# Build instructions
+# Build instruction
 
 ##  Compile and run unit tests
 $gradlew build
