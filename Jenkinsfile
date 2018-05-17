@@ -38,7 +38,7 @@ pipeline {
             stage ('verify') {
                  steps {
                      waitUntil {
-                        sh 'timeout 120 wget --retry-connrefused --tries=10 --waitretry=1 -q ${params.platform_url}/webTemplate -O /dev/null'
+                        sh "timeout 120 wget --retry-connrefused --tries=10 --waitretry=1 -q '${params.platform_url}'/webTemplate -O /dev/null"
 }
                  }
                 
