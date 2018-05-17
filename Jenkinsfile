@@ -30,9 +30,11 @@ pipeline {
                             dir('work-heroku/heroku-platform') {
                                  sh 'sh ../../gitcommit.sh'
                             }
-                        def response = httpRequest "'${params.platform_url}'/webTemplate"
-                        println("Status: "+response.status)
-                        println("Content: "+response.content)
+                        step {
+                            def response = httpRequest "'${params.platform_url}'/webTemplate"
+                            println("Status: "+response.status)
+                            println("Content: "+response.content)
+                        }
                     }  
                       }     
                 }
