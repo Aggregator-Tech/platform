@@ -38,13 +38,16 @@ pipeline {
             stage ('verify') {
                  steps {
                      retry(3) {
-    
+                        try {
                          script {
                                 def response = httpRequest "${params.platform_url}/webTemplate/v1/about"
                                 println("Status: "+response.status)
                                 println("Content: "+response.content)
-                            }   
-                         sleep 3
+                            }  
+                            catch (e) {
+                                sleep 5
+                                throw e
+                            }
                      }
                  }
                 
