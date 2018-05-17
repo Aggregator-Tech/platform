@@ -47,7 +47,7 @@ pipeline {
                                   catch (e)
                                   {
                                       println "Sleeping for 10..."
-                                      sleep 10
+                                      sleep 20
                                       throw e
                                 }  
                         
