@@ -16,7 +16,7 @@ class AboutTest extends Specification{
     def testGetAbout() {
         setup:
         ClientBuilder clientBuilder = ClientBuilder.newBuilder();
-        println "baseUrl= $basurl"
+        println "baseUrl= $baseUrl"
         
         WebTarget target = clientBuilder.build().target(baseUrl).path("/v1/about")
         String path =  target.getUri().getPath()
