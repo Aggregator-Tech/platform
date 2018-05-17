@@ -8,7 +8,7 @@ pipeline {
             
             stage('Build') {
                 steps {
-                    
+                       echo "${params.proxy_url} World!"
                         echo 'Building code.. '
                         sh './gradlew build'
                         echo 'running unit tests'
