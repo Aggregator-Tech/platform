@@ -46,8 +46,9 @@ pipeline {
                                   }
                                   catch (e)
                                   {
-                                      println("Status in error: "+response.status)
-                                    println("Content in error: "+response.content)
+                                      println "Sleeping for 5..."
+                                      sleep 5
+                                      throw e
                                 }  
                         
                             }
