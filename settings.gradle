@@ -2,3 +2,5 @@ rootProject.name = 'platform'
 include 'common'
 include 'webTemplate'
 include 'moduleTemplate'
+
+
