@@ -46,7 +46,7 @@ pipeline {
                     echo 'Commit to Heroku repo and that will trigger deploy on Heroku '
 
                     echo 'Run integ tests on staging env.'
-                    sh  './gradlew -b integ/build.gradle -DbaseUrl=https://aggregatortech-platform.herokuapp.com/webTemplate/ test'
+                    sh  './gradlew -b integ/build.gradle -DbaseUrl=https://aggregatortech-platform.herokuapp.com/webTemplate/ clean test'
 
 
                 }
