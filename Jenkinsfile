@@ -8,11 +8,9 @@ pipeline {
             
             stage('Build') {
                 steps {
-                       echo "${params.proxy_url} World!"
-                       echo "${env.proxy_url1} World!"
-                       echo "${proxy_url1} World!"
-                       echo "$proxy_url1 World!"
-                        echo 'Building code.. '
+                       echo "proxy configuration is $proxy_url"
+                       echo "Platform configuration is $platform_url"
+                       echo 'Building code.. '
                         sh 'chmod +x gradlew'
                         sh './gradlew build'
                        
@@ -22,7 +20,7 @@ pipeline {
             
             stage('Deploy') {
                 steps {
-                    withEnv(["HTTPS_PROXY=$proxy_url1"]) {
+                    withEnv(["HTTPS_PROXY=$proxy_url"]) {
                             echo 'Deploy  to remote repo.  Artifactory or  docker hub. We will not publish it to artifactory/docker hub yet '
                             sh  './gradlew installDist'
                             sh 'rm -rf work-heroku'
@@ -43,13 +41,13 @@ pipeline {
                     retry(3) {
                               script {
                                   try {
-                                    def response = httpRequest "${params.platform_url}/webTemplate/v1/about"
+                                    def response = httpRequest "$platform_url/webTemplate/v1/about"
                                     println("Status: "+response.status)
                                     println("Content: "+response.content)
                                   }
                                   catch (e)
                                   {
-                                      println "Sleeping for 10..."
+                                      println "Sleeping for 30..."
                                       sleep 30
                                       throw e
                                 }  
@@ -62,7 +60,7 @@ pipeline {
                 steps {
                     echo 'Commit to Heroku repo and that will trigger deploy on Heroku '
                     echo 'Run integ tests on staging env.'
-                    sh  "./gradlew -b integ/build.gradle -DbaseUrl='${params.platform_url}'/webTemplate clean test"
+                    sh  "./gradlew -b integ/build.gradle -DbaseUrl=$platform_url/webTemplate clean test"
                 }
             }
 
