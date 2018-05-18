@@ -8,7 +8,7 @@ $gradlew build
 ## Assembly
 ### As standalone  application
 $ gradlew installDist
-* For webTemplate project,  webTemplate/build/distributions  directory will contain the binaries for the application  pckages as zip and tar files. The  executable application will also be installed under webTemplate/build/install/webTemplate directory.
+* For webTemplate project,  webTemplate/build/distributions  directory will contain the binaries for the application  packages as zip and tar files. The  executable application will also be installed under webTemplate/build/install/webTemplate directory.
 
 ### Using Docker
 $ gradlew distDocker
