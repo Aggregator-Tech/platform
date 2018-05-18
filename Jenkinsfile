@@ -1,9 +1,6 @@
 pipeline {
     agent any
-      parameters {
-        string(name: 'platform_url', defaultValue: 'https://aggregatortech-platform.herokuapp.com', description: 'Platform  url')
-        string(name: 'proxy_url' , defaultValue: 'http://www-proxy.us.oracle.com:80', description: 'Proxy')
-    }
+      
         stages {
             
             stage('Build') {
