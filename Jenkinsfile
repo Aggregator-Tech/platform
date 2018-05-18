@@ -9,9 +9,9 @@ pipeline {
             stage('Build') {
                 steps {
                        echo "${params.proxy_url} World!"
-                       echo "${env.proxy_url12} World!"
-                       echo "${proxy_url12} World!"
-                       echo "$proxy_url12 World!"
+                       echo "${env.proxy_url1} World!"
+                       echo "${proxy_url1} World!"
+                       echo "$proxy_url1 World!"
                         echo 'Building code.. '
                         sh 'chmod +x gradlew'
                         sh './gradlew build'
@@ -22,7 +22,7 @@ pipeline {
             
             stage('Deploy') {
                 steps {
-                    withEnv(["HTTPS_PROXY='${params.proxy_url}'"]) {
+                    withEnv(["HTTPS_PROXY=$proxy_url1"]) {
                             echo 'Deploy  to remote repo.  Artifactory or  docker hub. We will not publish it to artifactory/docker hub yet '
                             sh  './gradlew installDist'
                             sh 'rm -rf work-heroku'
