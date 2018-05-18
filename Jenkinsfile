@@ -10,6 +10,7 @@ pipeline {
                 steps {
                        echo "${params.proxy_url} World!"
                         echo 'Building code.. '
+                        sh 'chmod +x gradlew'
                         sh './gradlew build'
                        
                       }
