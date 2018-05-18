@@ -9,9 +9,9 @@ pipeline {
             stage('Build') {
                 steps {
                        echo "${params.proxy_url} World!"
-                       echo "${env.proxy_url} World!"
-                       echo "${proxy_url} World!"
-                       echo "$proxy_url World!"
+                       echo "${env.proxy_url1} World!"
+                       echo "${proxy_url1} World!"
+                       echo "$proxy_url1 World!"
                         echo 'Building code.. '
                         sh 'chmod +x gradlew'
                         sh './gradlew build'
