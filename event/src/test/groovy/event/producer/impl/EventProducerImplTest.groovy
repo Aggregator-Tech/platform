@@ -27,7 +27,7 @@ class EventProducerImplTest extends Specification {
 
         then:
         1 * mockKafkaProducer.send({
-            ((ProducerRecord) it).topic == topic && it.key == eventPayload && it.value == eventPayload
+            ((ProducerRecord) it).topic == topic && it.key == null && it.value == eventPayload
         })
         assertThat(result, equalTo(Boolean.TRUE))
     }

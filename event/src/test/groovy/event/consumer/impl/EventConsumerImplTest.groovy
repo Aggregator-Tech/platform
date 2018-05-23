@@ -15,6 +15,7 @@ class EventConsumerImplTest extends Specification{
         EventConsumer eventConsumer = Spy(EventConsumerImpl);
         KafkaConsumer<String, String> mockKafkaConsumer = Mock()
         eventConsumer.getKafkaConsumer() >> mockKafkaConsumer
+        eventConsumer.processEvents(_) >> null
 
         when:
         Boolean response = eventConsumer.subscribe(topic)

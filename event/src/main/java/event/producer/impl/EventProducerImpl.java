@@ -1,5 +1,6 @@
 package event.producer.impl;
 
+import event.producer.EventProducer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
@@ -9,10 +10,15 @@ public class EventProducerImpl implements event.producer.EventProducer {
 
   volatile KafkaProducer<String, String> kafkaProducer;
 
+  public static void main(String[] args) {
+    EventProducer eventProducer = new EventProducerImpl();
+    eventProducer.publish("first", "event1");
+  }
+
   @Override
   public Boolean publish(String topic, String eventPayload) {
     ProducerRecord<String, String> producerRecord =
-        new ProducerRecord<String, String>(topic, eventPayload, eventPayload);
+        new ProducerRecord<String, String>(topic, null, eventPayload);
     getKafkaProducer().send(producerRecord);
     return Boolean.TRUE;
   }
