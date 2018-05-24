@@ -18,8 +18,9 @@ public class EventProducerImpl implements event.producer.EventProducer {
   @Override
   public Boolean publish(String topic, String eventPayload) {
     ProducerRecord<String, String> producerRecord =
-        new ProducerRecord<String, String>(topic, null, eventPayload);
+        new ProducerRecord<String, String>(topic, eventPayload, eventPayload);
     getKafkaProducer().send(producerRecord);
+    getKafkaProducer().close();
     return Boolean.TRUE;
   }
 
