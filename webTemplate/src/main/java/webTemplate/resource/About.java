@@ -5,8 +5,8 @@ import javax.ws.rs.Path;
 
 @Path("{version}/about")
 public class About {
-    @GET
-    public String get() {
-        return "webTemplate";
-    }
+  @GET
+  public String get() {
+    return "webTemplate";
+  }
 }
