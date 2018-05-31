@@ -1,6 +1,5 @@
 package event.consumer.impl
 
-import com.sun.org.apache.xpath.internal.operations.Bool
 import event.consumer.EventConsumer
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import spock.lang.Shared

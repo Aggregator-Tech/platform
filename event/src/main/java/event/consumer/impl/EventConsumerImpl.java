@@ -17,7 +17,7 @@ class EventConsumerImpl implements EventConsumer {
 
   public static void main(String[] args) {
     EventConsumer eventConsumer = new EventConsumerImpl();
-    eventConsumer.subscribe("first");
+    eventConsumer.subscribe("second");
   }
 
   @Override
@@ -76,7 +76,7 @@ class EventConsumerImpl implements EventConsumer {
 
   protected KafkaConsumer<String, String> buildKafkaConsumer() {
     Properties props = new Properties();
-    props.put("bootstrap.servers", "localhost:9091");
+    props.put("bootstrap.servers", "localhost:9092");
     props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
     props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
     props.put("group.id", "group1");

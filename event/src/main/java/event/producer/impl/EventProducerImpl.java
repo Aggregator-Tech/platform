@@ -12,7 +12,7 @@ public class EventProducerImpl implements event.producer.EventProducer {
 
   public static void main(String[] args) {
     EventProducer eventProducer = new EventProducerImpl();
-    eventProducer.publish("first", "event1");
+    eventProducer.publish("second", "event1");
   }
 
   @Override
@@ -39,7 +39,7 @@ public class EventProducerImpl implements event.producer.EventProducer {
 
   protected KafkaProducer<String, String> buildKafkaProducer() {
     Properties props = new Properties();
-    props.put("bootstrap.servers", "localhost:9091");
+    props.put("bootstrap.servers", "localhost:9092");
     props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
     props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
     return new KafkaProducer<String, String>(props);
