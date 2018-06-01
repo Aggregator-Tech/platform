@@ -5,13 +5,11 @@ services:
     ports:
       - "2181:2181"
   kafka:
-    image: aggregatortech/kafka:0.1
+    image: aggregatortech/kafka:0.2
     ports:
       - "9092:9092"
     environment:
-      KAFKA_HOME: /kafkaInstall
-      PATH: ${PATH}:/kafkaInstall/bin
-      KAFKA_ADVERTISED_HOST_NAME: 10.196.18.127
+      KAFKA_ADVERTISED_HOST_NAME: 10.196.21.2
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_BROKER_ID: 2
     volumes:
