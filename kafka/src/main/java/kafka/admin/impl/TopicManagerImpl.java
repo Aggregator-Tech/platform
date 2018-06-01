@@ -23,6 +23,8 @@ class TopicManagerImpl implements TopicManager {
     TopicManagerImpl topicManager = new TopicManagerImpl();
     System.out.println("Getting list of topics...");
     System.out.println("List of topics: " + topicManager.getTopics());
+//    topicManager.createTopic("second",1 , (short)1);
+//    System.out.println("List of topics: " + topicManager.getTopics());
   }
   @Override
   public Boolean createTopic(String topic, int partitions, short replication) {
