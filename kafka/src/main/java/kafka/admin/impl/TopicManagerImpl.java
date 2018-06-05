@@ -23,9 +23,9 @@ class TopicManagerImpl implements TopicManager {
     TopicManagerImpl topicManager = new TopicManagerImpl();
     System.out.println("Getting list of topics...");
     System.out.println("List of topics: " + topicManager.getTopics());
-    topicManager.createTopic("second",1 , (short)1);
+//    topicManager.createTopic("second",1 , (short)1);
 //    topicManager.deleteTopic("second");
-    System.out.println("List of topics: " + topicManager.getTopics());
+//    System.out.println("List of topics: " + topicManager.getTopics());
   }
 
   @Override
