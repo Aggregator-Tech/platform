@@ -1,4 +1,14 @@
 
+task startKafkaDocker(type: Exec) {
+    executable 'bash'
+    args '-c', "docker-compose -f ${projectDir}/src/main/resources/rhel/docker-compose.yml up -d"
+}
+
+task stopKafkaDocker(type: Exec) {
+    executable 'bash'
+    args '-c', "docker-compose -f ${projectDir}/src/main/resources/rhel/docker-compose.yml down"
+}
+
 dependencies {
     implementation (
             "org.apache.kafka:kafka-clients:1.1.0",
