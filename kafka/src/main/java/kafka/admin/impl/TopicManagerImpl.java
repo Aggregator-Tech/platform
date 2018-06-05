@@ -23,14 +23,24 @@ class TopicManagerImpl implements TopicManager {
     TopicManagerImpl topicManager = new TopicManagerImpl();
     System.out.println("Getting list of topics...");
     System.out.println("List of topics: " + topicManager.getTopics());
-//    topicManager.createTopic("second",1 , (short)1);
-//    System.out.println("List of topics: " + topicManager.getTopics());
+    topicManager.createTopic("second",1 , (short)1);
+//    topicManager.deleteTopic("second");
+    System.out.println("List of topics: " + topicManager.getTopics());
   }
+
   @Override
   public Boolean createTopic(String topic, int partitions, short replication) {
     Map<String, String> configs = new HashMap<>();
-    getKafkaAdminClient().createTopics(Stream.of(new NewTopic(topic, partitions, replication).configs(configs)).collect(Collectors.toList()));
-    return null;
+    getKafkaAdminClient().createTopics(
+            Stream.of(new NewTopic(topic, partitions, replication)
+                    .configs(configs)).collect(Collectors.toList()));
+    return true;
+  }
+
+  @Override
+  public Boolean deleteTopic(String topic) {
+    getKafkaAdminClient().deleteTopics(Stream.of(topic).collect(Collectors.toList()));
+    return true;
   }
 
   @Override
