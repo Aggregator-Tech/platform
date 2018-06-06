@@ -29,6 +29,7 @@ $gradlew run
 
 ## Integration Testing
 * The url for the webTemplate app uses the pattern http://<host>:<port>/webTemplate/v1/about. eg http://localhost:9501/webTemplate/v1/about
+* Integration test pertaining to sub project reside under <subProjectRoot>/src/integrationTest directory
 
 To run integration tests for the all projects under platform 
 $gradlew integrationTest -DbaseUrl=<baseUrl of the microservice>
