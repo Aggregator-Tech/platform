@@ -1,6 +1,7 @@
 package event.consumer.impl;
 
 import event.consumer.EventConsumer;
+import event.processor.EventProcessor;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -13,27 +14,52 @@ import java.util.stream.Stream;
 
 class EventConsumerImpl implements EventConsumer {
 
+  private final EventProcessor eventProcessor;
   volatile KafkaConsumer<String, String> kafkaConsumer;
+  private EventDispatcher eventDispatcher;
 
   public static void main(String[] args) {
-    EventConsumer eventConsumer = new EventConsumerImpl();
+    EventConsumer eventConsumer =
+            new EventConsumerImpl(record ->
+                    System.out.printf("offset = %d, key = %s, value = %s%n",
+                        record.offset(), record.key(), record.value()));
     eventConsumer.subscribe("second");
+    try {
+      Thread.sleep(10000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    eventConsumer.unSubscribe();
+
+  }
+  EventConsumerImpl(EventProcessor eventProcessor) {
+    this.eventProcessor = eventProcessor;
   }
 
   @Override
   public Boolean subscribe(String topic) {
     getKafkaConsumer().subscribe(Stream.of(topic).collect(Collectors.toList()));
-    processEvents(getKafkaConsumer());
+    startEventDispatcher(getKafkaConsumer());
     return true;
   }
 
-  protected void processEvents(KafkaConsumer<String, String> kafkaConsumer) {
-    EventProcessor eventProcessor = new EventProcessor();
-    new Thread(new EventProcessor()).start();
-    Runtime.getRuntime().addShutdownHook(new Thread(eventProcessor::shutdown));
+  @Override
+  public Boolean unSubscribe() {
+    buildEventDispatcherStopper().start();
+    return true;
   }
 
-  public class EventProcessor implements Runnable {
+  protected void startEventDispatcher(KafkaConsumer<String, String> kafkaConsumer) {
+    eventDispatcher = new EventDispatcher();
+    new Thread(eventDispatcher).start();
+    Runtime.getRuntime().addShutdownHook(buildEventDispatcherStopper());
+  }
+
+  private Thread buildEventDispatcherStopper() {
+    return new Thread(eventDispatcher::shutdown);
+  }
+
+  public class EventDispatcher implements Runnable {
     private final AtomicBoolean closed = new AtomicBoolean(false);
 
     public void run() {
@@ -41,8 +67,7 @@ class EventConsumerImpl implements EventConsumer {
         while (!closed.get()) {
           ConsumerRecords<String, String> records = getKafkaConsumer().poll(100);
           for (ConsumerRecord<String, String> record : records) {
-            System.out.printf("offset = %d, key = %s, value = %s%n",
-                record.offset(), record.key(), record.value());
+            eventProcessor.process(record);
           }
         }
       } catch (WakeupException e) {
