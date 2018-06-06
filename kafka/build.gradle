@@ -1,17 +1,33 @@
+ext {
+    platformHostIP = getHostIP()
+    platformHostType = getHostType()
+}
 
+def getHostType() {
+    String hostType = System.getenv("PLATFORM_HOST_TYPE")
+    if(hostType == null || hostType.isEmpty()) {
+        hostType = "rhel";
+    }
+    return hostType;
+}
+def getHostIP() {
+    java.net.InetAddress inetAddress = java.net.InetAddress.localHost;
+    println "inetAddress = $inetAddress.hostAddress";
+    return inetAddress.hostAddress;
+}
 task startKafkaDocker(type: Exec) {
+    environment("PLATFORM_HOST_IP", "${platformHostIP}")
     executable 'bash'
-    args '-c', "docker-compose -f ${projectDir}/src/main/resources/rhel/docker-compose.yml up -d"
+    args '-c', "docker-compose -f ${projectDir}/src/main/resources/${platformHostType}/docker-compose.yml up -d"
 }
 
 task stopKafkaDocker(type: Exec) {
     executable 'bash'
-    args '-c', "docker-compose -f ${projectDir}/src/main/resources/rhel/docker-compose.yml down"
+    args '-c', "docker-compose -f ${projectDir}/src/main/resources/${platformHostType}/docker-compose.yml down"
 }
 
 dependencies {
     implementation (
-            "org.apache.kafka:kafka-clients:1.1.0",
-            "org.apache.kafka:kafka-streams:1.1.0"
+            "org.apache.kafka:kafka-clients:1.1.0"
     )
 }
