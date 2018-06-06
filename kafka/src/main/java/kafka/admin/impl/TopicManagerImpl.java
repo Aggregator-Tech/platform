@@ -6,12 +6,15 @@ import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.ListTopicsResult;
 import org.apache.kafka.clients.admin.NewTopic;
+import org.apache.kafka.common.KafkaFuture;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -47,7 +50,9 @@ class TopicManagerImpl implements TopicManager {
   public Set<String> getTopics() {
     ListTopicsResult listTopicsResult = getKafkaAdminClient().listTopics();
     try {
-      return listTopicsResult.names().get();
+      return listTopicsResult.names().get(5, TimeUnit.SECONDS);
+    } catch (TimeoutException e) {
+      e.printStackTrace();
     } catch (InterruptedException e) {
       e.printStackTrace();
     } catch (ExecutionException e) {
