@@ -13,14 +13,14 @@ import javax.ws.rs.ext.MessageBodyWriter;
 
 public class Server {
   // Base URI the Grizzly HTTP server will listen on
-  public static final String BASE_URI = "http://" + NetworkListener.DEFAULT_NETWORK_HOST + ":%s/webTemplate/";
+  public static final String BASE_URL = "http://" + NetworkListener.DEFAULT_NETWORK_HOST + ":%s/webTemplate/";
 
-  private String getBaseUri() {
+  private String getBaseUrl() {
     String port = System.getenv("PORT");
     if (port == null || port.isEmpty()) {
       port = System.getProperty("server.port", "9501");
     }
-    return String.format(BASE_URI, port);
+    return String.format(BASE_URL, port);
   }
 
   /**
@@ -34,9 +34,9 @@ public class Server {
     rc.register(JacksonJaxbJsonProvider.class, MessageBodyReader.class, MessageBodyWriter.class);
 
     // create and start a new instance of grizzly http server
-    // exposing the Jersey application at BASE_URI
-    System.out.println("baseUri: " + getBaseUri());
-    return GrizzlyHttpServerFactory.createHttpServer(URI.create(getBaseUri()), rc);
+    // exposing the Jersey application at BASE_URL
+    System.out.println("baseUrl: " + getBaseUrl());
+    return GrizzlyHttpServerFactory.createHttpServer(URI.create(getBaseUrl()), rc);
   }
 
 

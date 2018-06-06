@@ -1,3 +1,14 @@
+plugins {
+    id 'org.unbroken-dome.test-sets' version '1.5.0' apply false
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+
+}
+
 subprojects {
 
     apply plugin: 'groovy'
@@ -5,6 +16,7 @@ subprojects {
     apply plugin: 'checkstyle'
     apply plugin: 'pmd'
     apply plugin: 'findbugs'
+    apply plugin: 'org.unbroken-dome.test-sets'
 
     sourceCompatibility =
     1.8
@@ -48,13 +60,12 @@ subprojects {
         }
     }
 
-}
-
-
-allprojects {
-    repositories {
-        jcenter()
+    testSets {
+        integrationTest {
+            systemProperties(System.properties)
+        }
     }
 
 }
+
 
