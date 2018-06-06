@@ -27,9 +27,16 @@ $ sh webTemplate/build/install/webTemplate/bin/webTemplate
 $gradlew run
 
 
-## Testing
+## Integration Testing
 * The url for the webTemplate app uses the pattern http://<host>:<port>/webTemplate/v1/about. eg http://localhost:9501/webTemplate/v1/about
-* For automated testing, Refer to https://github.com/Aggregator-Tech/platformIntegTest
+
+To run integration tests for the all projects under platform 
+$gradlew integrationTest -DbaseUrl=<baseUrl of the microservice>
+
+For example ./gradlew integrationTest -DbaseUrl=http://webhost1:9501/webTemplate
+
+To run integration tests for specific sub project under platform, say webTemplate
+$gradlew :webTemplate:integrationTest -DbaseUrl=<baseUrl of the microservice>
 
 ## Publishing
 ### Using Docker
