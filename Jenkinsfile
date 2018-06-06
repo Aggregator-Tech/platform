@@ -19,7 +19,9 @@ pipeline {
                 steps {
                     withEnv(["HTTPS_PROXY=$proxy_url"]) {
                             echo 'Deploy  to remote repo.  Artifactory or  docker hub. We will not publish it to artifactory/docker hub yet '
-                            sh  './gradlew distDocker'
+                         docker { image 'maven:3-alpine' }    
+                        //sh  './gradlew distDocker'
+                        
                             //if there is no heroku, we must deploy it on localmachine
                             //publish the docker image
                             //get the docker image
