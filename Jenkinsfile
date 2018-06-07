@@ -22,7 +22,7 @@ pipeline {
                          docker { image 'maven:3-alpine' }    
                           //sh  './gradlew distDocker'
                         
-                            //if there is no heroku, we must deploy it on localmachine
+                            //if there is no heroku, wemust deploy it on localmachine
                             //publish the docker image
                             //get the docker image
                             //start the dock
