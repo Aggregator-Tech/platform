@@ -25,7 +25,7 @@ pipeline {
                             //if there is no heroku, we must deploy it on localmachine
                             //publish the docker image
                             //get the docker image
-                            //start the docker
+                            //start the dock
                             
                             
                             
