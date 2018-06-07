@@ -2,17 +2,7 @@
 apply plugin: 'application'
 mainClassName = "webTemplate.service.Server"
 
-ext {
-    namespace='aggregatortech'
-    repository="webtemplate"
-    tag="$version"
-}
-
-task distDocker(type: Exec) {
-    dependsOn installDist
-    executable 'sh'
-    args '-c', "docker build -t=${namespace}/${repository}:${tag} ."
-}
+apply from: "$rootProject.projectDir/gradle/script/docker.gradle"
 
 dependencies {
     compile (
