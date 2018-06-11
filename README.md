@@ -47,6 +47,14 @@ $gradlew :webTemplate:integrationTest -DbaseUrl=<baseUrl of the microservice>
 * For more details, refer to https://docs.docker.com/docker-cloud/builds/push-images/
 
 ## Deployment
-### Using Docker
+### WebTemplate
 * docker pull aggregatortech/webtemplate:1.0
 * To pull and run docker image in a single command, use the docker run command documented in the Execution section.
+
+### Kafka
+To start the Kafka server
+* gradlew :kafka:startKafkaDocker
+
+To stop the Kafka server
+* gradlew :kafka:stopKafkaDocker
+
