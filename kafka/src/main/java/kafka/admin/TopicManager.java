@@ -10,4 +10,8 @@ public interface TopicManager {
   Boolean deleteTopic(String topic);
 
   Set<String> getTopics();
+
+  String getKafkaBootstrapServer();
+
+  void setKafkaBootstrapServer(String kafkaBootstrapServer);
 }
