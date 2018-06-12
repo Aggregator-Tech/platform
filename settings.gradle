@@ -4,3 +4,5 @@ include 'webTemplate'
 include 'moduleTemplate'
 include 'event'
 include 'kafka'
+include 'data'
+
