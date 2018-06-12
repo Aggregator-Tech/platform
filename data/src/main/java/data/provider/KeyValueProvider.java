@@ -2,7 +2,7 @@ package data.provider;
 
 public interface KeyValueProvider {
 
-    String setString(String key, String value);
+  String setString(String key, String value);
 
-    String getString(String key);
+  String getString(String key);
 }
