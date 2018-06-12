@@ -36,8 +36,8 @@ public class RedisKeyValueProviderFactory implements KeyValueProviderFactory {
         RedisClient redisClient =
                 RedisClient.create(
                         RedisURI.Builder
-                                .redis("redis-17291.c1.us-west-2-2.ec2.cloud.redislab.com",17291)
-                                .withDatabase(1).withPassword("Westworld@1").build());
+                                .redis("redis-17291.c1.us-west-2-2.ec2.cloud.redislabs.com",17291)
+                                .withDatabase(0).withPassword("jkyMnnc0ZxKMXKCzf2ieilsTrqbwIkIZ").build());
 
         return redisClient;
     }
