@@ -1,6 +1,5 @@
 package event.consumer.impl
 
-import com.sun.org.apache.xpath.internal.operations.Bool
 import event.consumer.EventConsumer
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import spock.lang.Shared
@@ -15,7 +14,7 @@ class EventConsumerImplTest extends Specification{
         EventConsumer eventConsumer = Spy(EventConsumerImpl);
         KafkaConsumer<String, String> mockKafkaConsumer = Mock()
         eventConsumer.getKafkaConsumer() >> mockKafkaConsumer
-        eventConsumer.processEvents(_) >> null
+        eventConsumer.startEventDispatcher(_) >> null
 
         when:
         Boolean response = eventConsumer.subscribe(topic)

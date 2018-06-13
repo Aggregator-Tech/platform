@@ -1,0 +1,11 @@
+ext {
+    namespace='aggregatortech'
+    repository="$project.name".toLowerCase()
+    tag="$version"
+}
+
+task distDocker(type: Exec) {
+    dependsOn installDist
+    executable 'sh'
+    args '-c', "docker build -t=${namespace}/${repository}:${tag} ."
+}
