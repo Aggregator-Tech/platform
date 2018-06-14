@@ -1,8 +1,8 @@
-package platform.webTemplate.resource;
+package platform.web.resource;
 
+import org.jvnet.hk2.annotations.Service;
 import platform.common.Constants;
 import platform.common.io.system.SystemHelper;
-import org.jvnet.hk2.annotations.Service;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -22,7 +22,7 @@ public class About {
   @GET
   public String get() {
     String about;
-    about = systemHelper.readConfigurationProperty(Constants.COMMON_ABOUT_DESCRIPTION).orElse("platform/webTemplate");
+    about = systemHelper.readConfigurationProperty(Constants.COMMON_ABOUT_DESCRIPTION).orElse("webTemplate");
     return about;
   }
 }

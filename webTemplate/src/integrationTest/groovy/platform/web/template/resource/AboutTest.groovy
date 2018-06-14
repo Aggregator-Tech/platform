@@ -1,4 +1,4 @@
-package platform.webTemplate.resource
+package platform.web.template.resource
 
 import spock.lang.Shared
 import spock.lang.Specification

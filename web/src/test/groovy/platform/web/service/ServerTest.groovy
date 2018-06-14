@@ -1,4 +1,4 @@
-package platform.webTemplate.service
+package platform.web.service
 
 import spock.lang.Specification
 
