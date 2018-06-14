@@ -1,0 +1,14 @@
+dependencies {
+    implementation (
+            ['io.lettuce:lettuce-core:5.0.4.RELEASE']
+    )
+}
+task startRedisDocker(type: Exec) {
+    executable 'bash'
+    args '-c', "docker-compose -f ${projectDir}/src/main/resources/docker-compose.yml up -d"
+}
+
+task stopRedisDocker(type: Exec) {
+    executable 'bash'
+    args '-c', "docker-compose -f ${projectDir}/src/main/resources/docker-compose.yml down"
+}
