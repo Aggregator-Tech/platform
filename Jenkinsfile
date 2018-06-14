@@ -43,9 +43,9 @@ pipeline {
                     retry(3) {
                               script {
                                   try {
-                                    def response = httpRequest "$platform_url/webTemplate/v1/about"
-                                    println("Status: "+response.status)
-                                    println("Content: "+response.content)
+                                    //def response = httpRequest "$platform_url/webTemplate/v1/about"
+                                    //println("Status: "+response.status)
+                                    //println("Content: "+response.content)
                                   }
                                   catch (e)
                                   {
@@ -69,7 +69,7 @@ pipeline {
             stage('Production') {
                 steps {
                     echo 'Deploy the prod env'
-                    input 'Do you want to deploy to the production env?'
+                    //input 'Do you want to deploy to the production env?'
                 }
             }
         }
