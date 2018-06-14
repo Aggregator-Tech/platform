@@ -23,6 +23,10 @@ subprojects {
 
     version '1.0'
     dependencies {
+        implementation (
+                ['org.glassfish.hk2:hk2:2.5.0-b36'],
+                ['org.glassfish.hk2:hk2-metadata-generator:2.5.0-b36']
+        )
         testImplementation (
             ['org.spockframework:spock-core:1.1-groovy-2.4-rc-2'],
             ['org.hamcrest:hamcrest-library:1.3'],
