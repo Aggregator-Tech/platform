@@ -28,7 +28,7 @@ public class About {
   @GET
   public String get(@PathParam("serviceName") String serviceName) {
     String about;
-    about = systemHelper.readConfigurationProperty(ConfigProperty.COMMON_ABOUT_DESCRIPTION)
+    about = systemHelper.readConfigurationProperty(ConfigProperty.SERVICE_DESCRIPTION)
             .orElse(serviceName);
     return about;
   }

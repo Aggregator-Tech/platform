@@ -18,7 +18,7 @@ class SystemHelperTest extends Specification {
         });
         SystemHelper systemHelper = serviceLocator.getService(SystemHelper.class);
         when:
-        Optional<String> property = systemHelper.readConfigurationProperty(ConfigProperty.COMMON_ABOUT_DESCRIPTION)
+        Optional<String> property = systemHelper.readConfigurationProperty(ConfigProperty.SERVICE_DESCRIPTION)
 
         then:
         !property.isPresent()

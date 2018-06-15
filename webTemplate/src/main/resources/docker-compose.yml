@@ -1,0 +1,7 @@
+version: '2'
+services:
+  webtemplate:
+    image: aggregatortech/webtemplate:1.0
+    ports:
+      - "9500:9501"
+

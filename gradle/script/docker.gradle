@@ -8,3 +8,13 @@ task distDocker(type: Exec) {
     executable 'sh'
     args '-c', "docker build -t=${namespace}/${repository}:${tag} ."
 }
+
+task startDocker(type: Exec) {
+    executable 'bash'
+    args '-c', "docker-compose -f ${projectDir}/src/main/resources/docker-compose.yml up -d"
+}
+
+task stopDocker(type: Exec) {
+    executable 'bash'
+    args '-c', "docker-compose -f ${projectDir}/src/main/resources/docker-compose.yml down"
+}

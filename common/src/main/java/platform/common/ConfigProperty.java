@@ -3,7 +3,8 @@ package platform.common;
 import com.google.common.base.CaseFormat;
 
 public enum ConfigProperty {
-  COMMON_ABOUT_DESCRIPTION;
+  SERVICE_DESCRIPTION,
+  SERVICE_PORT;
 
   @Override
   public String toString() {

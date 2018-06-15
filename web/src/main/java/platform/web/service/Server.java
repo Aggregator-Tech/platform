@@ -1,21 +1,18 @@
 package platform.web.service;
 
-import platform.common.Constants;
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.NetworkListener;
-import org.glassfish.hk2.api.ServiceLocator;
-import org.glassfish.hk2.utilities.ServiceLocatorUtilities;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.jvnet.hk2.annotations.Service;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.reflect.ClassPath;
+import platform.common.ConfigProperty;
+import platform.common.ServiceLocatorHelper;
+import platform.common.io.system.SystemHelper;
 
-import java.io.IOException;
-import java.net.URI;
 import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
+import java.io.IOException;
+import java.net.URI;
 
 
 public class Server {
@@ -25,7 +22,8 @@ public class Server {
   private String getBaseUrl() {
     String port = System.getenv("PORT");
     if (port == null || port.isEmpty()) {
-      port = System.getProperty("server.port", "9501");
+      port = ServiceLocatorHelper.getServiceLocator().getService(SystemHelper.class)
+          .readConfigurationProperty(ConfigProperty.SERVICE_PORT, "9501").get();
     }
     return String.format(BASE_URL, port);
   }
@@ -43,27 +41,11 @@ public class Server {
     // create and start a new instance of grizzly http server
     // exposing the Jersey application at BASE_URL
     System.out.println("baseUrl: " + getBaseUrl());
-
-    ServiceLocator serviceLocator = ServiceLocatorUtilities.createAndPopulateServiceLocator();
-    populateServices(serviceLocator);
-    return GrizzlyHttpServerFactory.createHttpServer(URI.create(getBaseUrl()), rc, serviceLocator);
+    return GrizzlyHttpServerFactory.createHttpServer(URI.create(getBaseUrl()), rc,
+                                                        ServiceLocatorHelper.getServiceLocator());
   }
 
-  private void populateServices(ServiceLocator serviceLocator) {
-    try {
-      ImmutableSet<ClassPath.ClassInfo> allClasses =
-          ClassPath.from(ClassLoader.getSystemClassLoader())
-              .getTopLevelClassesRecursive(Constants.PLATFORM_PACKAGE);
-      Class<?>[] serviceClasses = allClasses.stream()
-          .map(ClassPath.ClassInfo::load)
-          .filter(classObject -> classObject.isAnnotationPresent(Service.class))
-          .toArray(Class[]::new);
-      ServiceLocatorUtilities.addClasses(serviceLocator, serviceClasses);
 
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
 
 
   /**

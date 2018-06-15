@@ -5,6 +5,6 @@ import spock.lang.Specification
 class ConfigPropertyTest extends Specification {
     def "ToString"() {
         expect:
-        ConfigProperty.COMMON_ABOUT_DESCRIPTION.toString() == "commonAboutDescription";
+        ConfigProperty.SERVICE_DESCRIPTION.toString() == "serviceDescription";
     }
 }
