@@ -34,7 +34,7 @@ $gradlew run
 To run integration tests for the all projects under platform 
 $gradlew integrationTest -DbaseUrl=<baseUrl of the microservice>
 
-For example ./gradlew integrationTest -DbaseUrl=http://webhost1:9501/webTemplate
+For example ./gradlew integrationTest -DbaseUrl=http://webhost1:9501
 
 To run integration tests for specific sub project under platform, say webTemplate
 $gradlew :webTemplate:integrationTest -DbaseUrl=<baseUrl of the microservice>
