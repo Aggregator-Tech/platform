@@ -20,9 +20,9 @@ import java.util.stream.Stream;
 class TopicManagerImpl implements TopicManager {
 
   volatile AdminClient adminClient;
-    private String kafkaBootstrapServer;
+  private String kafkaBootstrapServer;
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
     TopicManagerImpl topicManager = new TopicManagerImpl();
     System.out.println("Getting list of topics...");
     System.out.println("List of topics: " + topicManager.getTopics());
@@ -35,8 +35,8 @@ class TopicManagerImpl implements TopicManager {
   public Boolean createTopic(String topic, int partitions, short replication) {
     Map<String, String> configs = new HashMap<>();
     getKafkaAdminClient().createTopics(
-            Stream.of(new NewTopic(topic, partitions, replication)
-                    .configs(configs)).collect(Collectors.toList()));
+        Stream.of(new NewTopic(topic, partitions, replication)
+            .configs(configs)).collect(Collectors.toList()));
     return true;
   }
 
@@ -74,7 +74,7 @@ class TopicManagerImpl implements TopicManager {
   }
 
   protected AdminClient buildKafkaAdminClient() {
-    Properties config  = new Properties();
+    Properties config = new Properties();
     config.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, getKafkaBootstrapServer());
     AdminClient adminClient = AdminClient.create(config);
     return adminClient;
@@ -82,12 +82,12 @@ class TopicManagerImpl implements TopicManager {
 
   @Override
   public String getKafkaBootstrapServer() {
-        return kafkaBootstrapServer;
+    return kafkaBootstrapServer;
   }
 
   @Override
   public void setKafkaBootstrapServer(String kafkaBootstrapServer) {
-        this.kafkaBootstrapServer = kafkaBootstrapServer;
+    this.kafkaBootstrapServer = kafkaBootstrapServer;
   }
 
 }

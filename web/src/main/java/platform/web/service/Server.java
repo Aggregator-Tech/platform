@@ -1,23 +1,22 @@
 package platform.web.service;
 
+import platform.common.Constants;
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.reflect.ClassPath;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.NetworkListener;
 import org.glassfish.hk2.api.ServiceLocator;
 import org.glassfish.hk2.utilities.ServiceLocatorUtilities;
-import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.jvnet.hk2.annotations.Service;
-import platform.common.Constants;
-import platform.common.io.system.SystemHelper;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.reflect.ClassPath;
 
-import javax.ws.rs.ext.MessageBodyReader;
-import javax.ws.rs.ext.MessageBodyWriter;
 import java.io.IOException;
 import java.net.URI;
+import javax.ws.rs.ext.MessageBodyReader;
+import javax.ws.rs.ext.MessageBodyWriter;
+
 
 public class Server {
   // Base URI the Grizzly HTTP server will listen on
@@ -69,7 +68,6 @@ public class Server {
 
   /**
    * Main method.
-   *
    */
   public static void main(String[] args) throws IOException {
     Server server = new Server();
