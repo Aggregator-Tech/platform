@@ -7,7 +7,7 @@ class ServerTest extends Specification {
         when:
         Server server = new Server();
         then:
-        assert server.getBaseUrl() == "http://0.0.0.0:9501/webTemplate/"
+        assert server.getBaseUrl() == "http://0.0.0.0:9501/"
     }
 
     def "GetBaseUri with configured port"() {
@@ -15,7 +15,7 @@ class ServerTest extends Specification {
         Server server = new Server();
         System.setProperty("server.port", "9500");
         then:
-        assert server.getBaseUrl() == "http://0.0.0.0:9500/webTemplate/"
+        assert server.getBaseUrl() == "http://0.0.0.0:9500/"
     }
 
 }

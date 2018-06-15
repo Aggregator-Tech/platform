@@ -7,8 +7,9 @@ import platform.common.io.system.SystemHelper;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
-@Path("{version}/about")
+@Path("{serviceName}/{version}/about")
 @Service
 public class About {
 
@@ -20,9 +21,9 @@ public class About {
   }
 
   @GET
-  public String get() {
+  public String get(@PathParam("serviceName") String serviceName) {
     String about;
-    about = systemHelper.readConfigurationProperty(Constants.COMMON_ABOUT_DESCRIPTION).orElse("webTemplate");
+    about = systemHelper.readConfigurationProperty(Constants.COMMON_ABOUT_DESCRIPTION).orElse(serviceName);
     return about;
   }
 }

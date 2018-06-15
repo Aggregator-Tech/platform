@@ -16,7 +16,7 @@ class AboutTest extends Specification{
     def testGetAbout() {
         setup:
         ClientBuilder clientBuilder = ClientBuilder.newBuilder();
-        WebTarget target = clientBuilder.build().target(baseUrl).path("/v1/about")
+        WebTarget target = clientBuilder.build().target(baseUrl).path("/webTemplate/v1/about")
 
         when:
         String response = target.request().get(String.class)
