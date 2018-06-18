@@ -5,7 +5,7 @@ services:
     ports:
       - "2181:2181"
   kafka:
-    image: ${namespace}/kafka:0.2
+    image: ${namespace}/kafka
     ports:
       - "9092:9092"
     environment:
