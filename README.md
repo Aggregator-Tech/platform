@@ -43,10 +43,10 @@ To stop
 
 ### Kafka
 To start the Kafka server
-* gradlew :kafka:startKafkaDocker
+* gradlew :kafka:startDocker
 
 To stop the Kafka server
-* gradlew :kafka:stopKafkaDocker
+* gradlew :kafka:stopDocker
 
 ### Redis ( Currently required for data module only)
 To start the Redis server

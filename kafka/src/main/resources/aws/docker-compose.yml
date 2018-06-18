@@ -1,11 +1,11 @@
 version: '2'
 services:
   zookeeper:
-    image: aggregatortech/zookeeper
+    image: ${namespace}/zookeeper
     ports:
       - "2181:2181"
   kafka:
-    image: aggregatortech/kafka:0.2
+    image: ${namespace}/kafka:0.2
     ports:
       - "9092:9092"
     environment:

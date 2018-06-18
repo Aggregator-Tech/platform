@@ -16,13 +16,17 @@ def getHostIP() {
     println "inetAddress = $inetAddress.hostAddress";
     return inetAddress.hostAddress;
 }
-task startKafkaDocker(type: Exec) {
+task startDocker(type: Exec) {
     environment("PLATFORM_HOST_IP", "${platformHostIP}")
+    environment("COMPOSE_PROJECT_NAME", "${project.name}")
+    environment("namespace", "${namespace}")
     executable 'bash'
     args '-c', "docker-compose -f ${projectDir}/src/main/resources/${platformHostType}/docker-compose.yml up -d"
 }
 
-task stopKafkaDocker(type: Exec) {
+task stopDocker(type: Exec) {
+    environment("COMPOSE_PROJECT_NAME", "${project.name}")
+    environment("namespace", "${namespace}")
     executable 'bash'
     args '-c', "docker-compose -f ${projectDir}/src/main/resources/${platformHostType}/docker-compose.yml down"
 }
