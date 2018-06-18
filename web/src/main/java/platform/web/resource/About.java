@@ -1,6 +1,6 @@
 package platform.web.resource;
 
-import platform.common.ConfigProperty;
+import platform.common.CommonConfigProperty;
 import platform.common.io.system.SystemHelper;
 
 import org.jvnet.hk2.annotations.Service;
@@ -28,7 +28,7 @@ public class About {
   @GET
   public String get(@PathParam("serviceName") String serviceName) {
     String about;
-    about = systemHelper.readConfigurationProperty(ConfigProperty.SERVICE_DESCRIPTION)
+    about = systemHelper.readConfigurationProperty(CommonConfigProperty.SERVICE_DESCRIPTION)
             .orElse(serviceName);
     return about;
   }

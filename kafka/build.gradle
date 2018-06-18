@@ -1,8 +1,4 @@
-dependencies {
-    implementation (
-            project(':common')
-    )
-}
+
 ext {
     platformHostIP = getHostIP()
     platformHostType = getHostType()
@@ -31,8 +27,3 @@ task stopKafkaDocker(type: Exec) {
     args '-c', "docker-compose -f ${projectDir}/src/main/resources/${platformHostType}/docker-compose.yml down"
 }
 
-dependencies {
-    implementation (
-            "org.apache.kafka:kafka-clients:1.1.0"
-    )
-}

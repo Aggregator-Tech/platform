@@ -9,9 +9,7 @@ class TopicManagerIntegrationTest extends Specification{
         setup:
         TopicManager topicManager = new TopicManagerImpl();
         when:
-        String kafkaBootstrapServer = new SystemHelper().readConfigurationProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVER).get();
-        if(kafkaBootstrapServer == null || kafkaBootstrapServer.isEmpty())
-            kafkaBootstrapServer = "localhost:9092"
+        String kafkaBootstrapServer = new SystemHelper().readConfigurationProperty(KafkaConfigProperty.KAFKA_BOOTSTRAP_SERVER, "localhost:9092").get();
         topicManager.setKafkaBootstrapServer(kafkaBootstrapServer)
         Set<String> topics = topicManager.getTopics();
         then:

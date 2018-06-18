@@ -5,7 +5,7 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.NetworkListener;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-import platform.common.ConfigProperty;
+import platform.common.CommonConfigProperty;
 import platform.common.ServiceLocatorHelper;
 import platform.common.io.system.SystemHelper;
 
@@ -23,7 +23,7 @@ public class Server {
     String port = System.getenv("PORT");
     if (port == null || port.isEmpty()) {
       port = ServiceLocatorHelper.getServiceLocator().getService(SystemHelper.class)
-          .readConfigurationProperty(ConfigProperty.SERVICE_PORT, "9501").get();
+          .readConfigurationProperty(CommonConfigProperty.SERVICE_PORT, "9501").get();
     }
     return String.format(BASE_URL, port);
   }
