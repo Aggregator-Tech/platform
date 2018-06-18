@@ -48,7 +48,7 @@ To start the Kafka server
 To stop the Kafka server
 * gradlew :kafka:stopDocker
 
-### Redis ( Currently required for data module only)
+### Redis
 To start the Redis server
 * gradlew :redis:startDocker
 
