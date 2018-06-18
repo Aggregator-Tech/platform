@@ -26,19 +26,6 @@ $ sh webTemplate/build/install/webTemplate/bin/webTemplate
 ### Using Gradle: 
 $gradlew run
 
-
-## Integration Testing
-* The url for the webTemplate app uses the pattern http://<host>:<port>/webTemplate/v1/about. eg http://localhost:9501/webTemplate/v1/about
-* Integration test pertaining to sub project reside under <subProjectRoot>/src/integrationTest directory
-
-To run integration tests for the all projects under platform 
-$gradlew integrationTest -DbaseUrl=<baseUrl of the microservice>
-
-For example ./gradlew integrationTest -DbaseUrl=http://webhost1:9501
-
-To run integration tests for specific sub project under platform, say webTemplate
-$gradlew :webTemplate:integrationTest -DbaseUrl=<baseUrl of the microservice>
-
 ## Publishing
 ### Using Docker
 * $ docker login
@@ -48,8 +35,11 @@ $gradlew :webTemplate:integrationTest -DbaseUrl=<baseUrl of the microservice>
 
 ## Deployment
 ### WebTemplate
-* docker pull aggregatortech/webtemplate:1.0
-* To pull and run docker image in a single command, use the docker run command documented in the Execution section.
+To start
+* gradlew :webTemplate:startDocker
+
+To stop
+* gradlew :webTemplate:stopDocker
 
 ### Kafka
 To start the Kafka server
@@ -60,8 +50,20 @@ To stop the Kafka server
 
 ### Redis ( Currently required for data module only)
 To start the Redis server
-* gradlew :data:startRedisDocker
+* gradlew :redis:startDocker
 
 To stop the Redis server
-* gradlew :data:stopRedisDocker
+* gradlew :redis:stopDocker
+
+## Integration Testing
+* The url for the webTemplate app uses the pattern http://<host>:<port>/webTemplate/v1/about. eg http://localhost:9501/webTemplate/v1/about
+* Integration test pertaining to sub project reside under <subProjectRoot>/src/integrationTest directory
+
+To run integration tests for the all projects under platform
+$gradlew integrationTest -DbaseUrl=<baseUrl of the microservice>
+
+For example ./gradlew integrationTest -DbaseUrl=http://localhost:9500
+
+To run integration tests for specific sub project under platform, say webTemplate
+$gradlew :webTemplate:integrationTest -DbaseUrl=<baseUrl of the microservice>
 
