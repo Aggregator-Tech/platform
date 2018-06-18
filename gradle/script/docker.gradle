@@ -1,5 +1,4 @@
 ext {
-    namespace='aggregatortech'
     repository="$project.name".toLowerCase()
     tag="$version"
 }

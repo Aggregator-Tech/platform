@@ -6,4 +6,5 @@ include 'event'
 include 'kafka'
 include 'data'
 include 'webTemplate'
+include 'redis'
 
