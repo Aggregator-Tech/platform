@@ -1,10 +1,13 @@
 package platform.common.io.system;
 
+import com.google.common.base.CaseFormat;
 import org.jvnet.hk2.annotations.Service;
 import platform.common.ConfigProperty;
 
+import javax.inject.Singleton;
 import java.util.Optional;
 
+@Singleton
 @Service
 public class SystemHelper {
 
@@ -29,7 +32,7 @@ public class SystemHelper {
    */
   public Optional<String> readConfigurationProperty(ConfigProperty configProperty,
                                                     String defaultValue) {
-    String propertyName = configProperty.toString();
+    String propertyName = getConfigPropertyAsString(configProperty);
     String propertyValue;
     propertyValue = System.getenv(propertyName);
     if (propertyValue == null) {
@@ -39,6 +42,20 @@ public class SystemHelper {
       propertyValue = defaultValue;
     }
     return Optional.ofNullable(propertyValue);
+  }
+
+  /**
+   * Write the value of a configuration property.
+   * @param configProperty The configuration property.
+   * @param value The value.
+   */
+  public void writeConfigurationProperty(ConfigProperty configProperty,
+                                    String value) {
+    System.setProperty(getConfigPropertyAsString(configProperty), value);
+  }
+
+  private String getConfigPropertyAsString(ConfigProperty configProperty) {
+    return CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, configProperty.toString());
   }
 
 }
