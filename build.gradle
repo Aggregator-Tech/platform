@@ -36,6 +36,9 @@ subprojects {
             ['org.objenesis:objenesis:2.2'],
             ['org.glassfish.jersey.core:jersey-client:2.26']
         )
+        if(project.name != "common") {
+            testImplementation  project(':common').sourceSets.test.output
+        }
     }
 
     checkstyle {
