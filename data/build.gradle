@@ -1,5 +1,6 @@
 dependencies {
     implementation (
+            project(":common"),
             ['io.lettuce:lettuce-core:5.0.4.RELEASE']
     )
 }

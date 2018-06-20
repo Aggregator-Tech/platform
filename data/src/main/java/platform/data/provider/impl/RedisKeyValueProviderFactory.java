@@ -1,10 +1,14 @@
 package platform.data.provider.impl;
 
+import org.jvnet.hk2.annotations.Service;
+import platform.data.constant.DataRepositoryType;
 import platform.data.provider.KeyValueProvider;
 import platform.data.provider.KeyValueProviderFactory;
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.RedisURI;
 
+
+@Service(name = DataRepositoryType.REDIS)
 public class RedisKeyValueProviderFactory implements KeyValueProviderFactory {
 
   /**

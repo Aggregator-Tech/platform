@@ -54,7 +54,7 @@ public class SystemHelper {
     System.setProperty(getConfigPropertyAsString(configProperty), value);
   }
 
-  private String getConfigPropertyAsString(ConfigProperty configProperty) {
+  public String getConfigPropertyAsString(ConfigProperty configProperty) {
     return CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, configProperty.toString());
   }
 
