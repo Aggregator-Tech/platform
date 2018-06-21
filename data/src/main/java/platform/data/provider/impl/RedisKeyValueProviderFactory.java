@@ -27,6 +27,7 @@ public class RedisKeyValueProviderFactory implements KeyValueProviderFactory {
   }
 
   private static volatile RedisClient redisClient;
+  private static volatile RedisKeyValueProvider redisKeyValueProvider;
 
   private RedisClient getRedisClient() {
     if (redisClient == null) {
@@ -53,7 +54,14 @@ public class RedisKeyValueProviderFactory implements KeyValueProviderFactory {
 
   @Override
   public KeyValueProvider getInstance() {
-    return new RedisKeyValueProvider(getRedisClient());
+    if (redisKeyValueProvider == null) {
+      synchronized (this) {
+        if (redisKeyValueProvider == null) {
+          redisKeyValueProvider = new RedisKeyValueProvider(getRedisClient());
+        }
+      }
+    }
+    return redisKeyValueProvider;
   }
 
 

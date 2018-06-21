@@ -7,9 +7,11 @@ import io.lettuce.core.api.sync.RedisCommands;
 
 public class RedisKeyValueProvider implements KeyValueProvider {
   RedisClient redisClient;
+  StatefulRedisConnection<String, String> statefulRedisConnection;
 
   public RedisKeyValueProvider(RedisClient redisClient) {
     this.redisClient = redisClient;
+    statefulRedisConnection = redisClient.connect();
   }
 
   @Override
@@ -25,8 +27,6 @@ public class RedisKeyValueProvider implements KeyValueProvider {
   }
 
   private RedisCommands<String, String> getSyncCommands() {
-    StatefulRedisConnection<String, String> statefulRedisConnection =
-        redisClient.connect();
     RedisCommands<String, String> syncCommands = statefulRedisConnection.sync();
     return syncCommands;
   }
