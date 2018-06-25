@@ -34,6 +34,14 @@ $gradlew run
 * For more details, refer to https://docs.docker.com/docker-cloud/builds/push-images/
 
 ## Deployment
+To start all services
+* gradlew startDocker
+
+To stop all services
+* gradlew stopDocker
+
+Individual services can also be controlled by using the respective startDocker and stopDocker tasks at module level:
+
 ### WebTemplate
 To start
 * gradlew :webTemplate:startDocker
