@@ -9,8 +9,10 @@ class ServerTest extends Specification {
     def "GetBaseUri"() {
         when:
         Server server = new Server();
+        server.getBaseUrl()
         then:
-        assert server.getBaseUrl() == "http://0.0.0.0:9501/"
+        RuntimeException runtimeException = thrown()
+        runtimeException.getMessage() == "Failed to read configuration property: servicePort"
     }
 
     def "GetBaseUri with configured port"() {

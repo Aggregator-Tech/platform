@@ -15,6 +15,23 @@ public class SystemHelper {
    * Read the value of configuration property with the following precedence:
    * 1. Environment variable.
    * 2. Java system property.
+   * If the configuration property is not specified, a RuntimeException will be thrown.
+   * @param configProperty The configuration property name.
+   */
+  public String readMandatoryConfigurationProperty(ConfigProperty configProperty) {
+    Optional<String> configPropertyValue = readConfigurationProperty(configProperty, null);
+    if (configPropertyValue.isPresent()) {
+      return configPropertyValue.get();
+    } else {
+      throw new RuntimeException("Failed to read configuration property: "
+          + getConfigPropertyAsString(configProperty));
+    }
+  }
+
+  /**
+   * Read the value of configuration property with the following precedence:
+   * 1. Environment variable.
+   * 2. Java system property.
    *
  * @param configProperty The configuration property name.
    */
