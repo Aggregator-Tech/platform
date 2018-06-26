@@ -6,6 +6,7 @@ import org.glassfish.hk2.api.ServiceLocator;
 import org.glassfish.hk2.utilities.ServiceLocatorUtilities;
 import org.jvnet.hk2.annotations.Service;
 
+import javax.inject.Singleton;
 import java.io.IOException;
 
 public class ServiceLocatorHelper {
@@ -26,7 +27,7 @@ public class ServiceLocatorHelper {
 
   private static void populateServices() {
     try {
-      serviceLocator = ServiceLocatorUtilities.createAndPopulateServiceLocator();
+      setServiceLocator(ServiceLocatorUtilities.createAndPopulateServiceLocator());
 
       ImmutableSet<ClassPath.ClassInfo> allClasses =
           ClassPath.from(ClassLoader.getSystemClassLoader())
@@ -35,7 +36,7 @@ public class ServiceLocatorHelper {
           .map(ClassPath.ClassInfo::load)
           .filter(classObject -> classObject.isAnnotationPresent(Service.class))
           .toArray(Class[]::new);
-      ServiceLocatorUtilities.addClasses(serviceLocator, serviceClasses);
+      ServiceLocatorUtilities.addClasses(getServiceLocator(), serviceClasses);
 
     } catch (IOException e) {
       e.printStackTrace();

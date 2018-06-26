@@ -13,6 +13,7 @@ import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.util.Optional;
 
 
 public class Server {
@@ -23,7 +24,7 @@ public class Server {
     String port = System.getenv("PORT");
     if (port == null || port.isEmpty()) {
       port = ServiceLocatorHelper.getServiceLocator().getService(SystemHelper.class)
-          .readConfigurationProperty(CommonConfigProperty.SERVICE_PORT, "9501").get();
+          .readMandatoryConfigurationProperty(CommonConfigProperty.SERVICE_PORT);
     }
     return String.format(BASE_URL, port);
   }

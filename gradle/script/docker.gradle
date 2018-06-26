@@ -14,6 +14,7 @@ task startDocker(type: Exec) {
     environment("namespace", "${namespace}")
     environment("repository", "${repository}")
     environment("tag", "${tag}")
+    environment("servicePort", "${servicePort}")
     executable 'bash'
     args '-c', "docker-compose -f ${projectDir}/src/main/resources/docker-compose.yml up -d"
 }
@@ -23,6 +24,7 @@ task stopDocker(type: Exec) {
     environment("namespace", "${namespace}")
     environment("repository", "${repository}")
     environment("tag", "${tag}")
+    environment("servicePort", "${servicePort}")
     executable 'bash'
     args '-c', "docker-compose -f ${projectDir}/src/main/resources/docker-compose.yml down"
 }

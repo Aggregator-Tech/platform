@@ -1,17 +1,22 @@
 package platform.data.provider
 
-import platform.data.provider.impl.RedisKeyValueProviderFactory
-import spock.lang.Specification
+import platform.common.io.system.SystemHelper
+import platform.common.test.BaseSpecification
+import platform.data.DataConfigProperty
+import platform.data.constant.DataRepositoryType
 
-class RedisKeyValueProviderFactoryTest extends Specification{
+class RedisKeyValueProviderFactoryTest extends BaseSpecification{
 
+    def setupSpec() {
+        println "setup RedisKeyValueProviderFactoryTest";
+    }
     def "Verify Set and Get entry in Redis" () {
         setup:
         String key = "key1";
         String value = "value1";
-        RedisKeyValueProviderFactory redisKeyValueProviderFactory =
-                new RedisKeyValueProviderFactory();
-        KeyValueProvider keyValueProvider = redisKeyValueProviderFactory.getInstance();
+        SystemHelper systemHelper = serviceLocator.getService(SystemHelper.class);
+        systemHelper.writeConfigurationProperty(DataConfigProperty.DATA_REPOSITORY_TYPE, DataRepositoryType.REDIS);
+        KeyValueProvider keyValueProvider = serviceLocator.getService(KeyValueProvider.class)
 
         when:
         keyValueProvider.setString(key, value);
