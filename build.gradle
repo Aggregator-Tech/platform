@@ -13,10 +13,8 @@ subprojects {
 
     apply plugin: 'groovy'
     apply plugin: 'java'
-    apply plugin: 'checkstyle'
-    apply plugin: 'pmd'
-    apply plugin: 'findbugs'
     apply from: "$rootProject.projectDir/gradle/script/subCommon.gradle"
+    apply from: "$rootProject.projectDir/gradle/script/staticCodeAnalysis.gradle"
     apply from: "$rootProject.projectDir/gradle/script/integrationTest.gradle"
 
     sourceCompatibility =
@@ -40,37 +38,6 @@ subprojects {
             testImplementation  project(':common').sourceSets.test.output
         }
     }
-
-    checkstyle {
-        configFile new File(rootDir, "/gradle/config/checkstyle.xml")
-    }
-
-    tasks.withType(Pmd){
-        reports{
-            xml.enabled=true
-            html.enabled=true
-        }
-    }
-
-    pmd {
-
-        ignoreFailures = true
-        pmdTest.enabled=false
-    }
-
-    findbugs{
-        ignoreFailures=true
-        findbugsTest.enabled=false
-    }
-
-    tasks.withType(FindBugs) {
-        reports {
-            xml.enabled = false
-            html.enabled = true
-        }
-    }
-
-
 }
 
 
