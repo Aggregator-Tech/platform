@@ -21,7 +21,7 @@ pipeline {
                        echo "Platform configuration is $platform_url"
                        echo 'Building code.. '
                         sh 'chmod +x gradlew'
-                        sh './gradlew installDocker'
+                        sh './gradlew distDocker'
                }
                
                 }
