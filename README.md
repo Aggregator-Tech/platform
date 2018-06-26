@@ -13,19 +13,6 @@ $ gradlew installDist
 ### Using Docker
 $ gradlew distDocker
 
-## Execution
-### As Stadalone Application
-$ sh webTemplate/build/install/webTemplate/bin/webTemplate
-* The default port will be 9501
-* To start the application on a different  port set the java system property servicePort by setting the WEB_TEMPLATE_OPTS environment variable before running the above command. For example, export WEB_TEMPLATE_OPTS=-DservicePort=9500
-
-### Using Docker:
-* $docker run -p <exposed_port>:9501 aggregatortech/webtemplate:1.0
-* For example docker run -p 9500:9501 aggregatortech/webtemplate:1.0
-
-### Using Gradle: 
-$gradlew run
-
 ## Publishing
 ### Using Docker
 * $ docker login
