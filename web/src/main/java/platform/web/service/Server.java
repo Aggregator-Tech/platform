@@ -6,6 +6,7 @@ import org.glassfish.grizzly.http.server.NetworkListener;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import platform.common.CommonConfigProperty;
+import platform.common.Constants;
 import platform.common.ServiceLocatorHelper;
 import platform.common.io.system.SystemHelper;
 
@@ -36,7 +37,7 @@ public class Server {
    */
   public HttpServer startServer() {
     // create a resource config that scans for JAX-RS resources and providers
-    final ResourceConfig rc = new ResourceConfig().packages("platform.web");
+    final ResourceConfig rc = new ResourceConfig().packages(Constants.PLATFORM_PACKAGE);
     rc.register(JacksonJaxbJsonProvider.class, MessageBodyReader.class, MessageBodyWriter.class);
 
     // create and start a new instance of grizzly http server

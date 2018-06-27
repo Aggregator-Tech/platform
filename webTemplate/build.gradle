@@ -1,5 +1,5 @@
 ext {
-    servicePort='9501'
+    servicePort='9499'
 }
 
 apply from: "$rootProject.projectDir/gradle/script/web.gradle"

@@ -1,0 +1,9 @@
+version: '2'
+services:
+  config:
+    image: ${namespace}/${repository}:${tag}
+    environment:
+      servicePort: ${servicePort}
+    ports:
+      - "${servicePort}:${servicePort}"
+
