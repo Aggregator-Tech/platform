@@ -11,6 +11,6 @@ dependencies {
     )
 
 }
-task publish(type: Exec)  dependsOn publishToDockerHub {
+task publishWeb(type: Exec)  dependsOn publishToDockerHub {
 
 }
