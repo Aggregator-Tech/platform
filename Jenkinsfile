@@ -35,7 +35,7 @@ pipeline {
                        echo "Platform configuration is $platform_url"
                        echo 'Building code.. '
                         sh 'chmod +x gradlew'
-                        sh './gradlew  -Dhttp.proxyHost=www-proxy.us.oracle.com -Dhttp.proxyPort=80 -Dhttps.proxyHost=www-proxy.us.oracle.com -Dhttps.proxyPort=80  integrationTest'
+                        sh './gradlew  -Dhttp.proxyHost=www-proxy.us.oracle.com -Dhttp.proxyPort=80 -Dhttps.proxyHost=www-proxy.us.oracle.com -Dhttps.proxyPort=80  integrationTest -DbaseUrl=http://localhost:9091/'
                         
                }
                
