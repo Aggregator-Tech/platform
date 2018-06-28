@@ -4,9 +4,7 @@ ext {
 }
 
 task publish(type: Exec) {
-    dependsOn installDist
-    executable 'sh'
-    args '-c', "docker build -t=${namespace}/${repository}:${tag} ."
+    //do nothing, will let projects decide whether to publish to docker hub, artifactory or custom place
 }
 
 task publishToDockerHub(type: Exec) {
@@ -16,7 +14,8 @@ task publishToDockerHub(type: Exec) {
     environment("tag", "${tag}")
     environment("servicePort", "${servicePort}")
     executable 'bash'
-    args '-c', "docker-compose -f ${projectDir}/src/main/resources/docker-compose.yml up -d"
+    args '-c', "docker login -u aggregatortech -p Westworld@1;docker push aggregatortech/${project.name}"
+
 }
 
 task publishToArtifactory(type: Exec) {
