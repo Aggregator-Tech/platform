@@ -44,7 +44,7 @@ pipeline {
                        echo "Platform configuration is $platform_url"
                        echo 'Building code.. '
                         sh 'chmod +x gradlew'
-                        sh 'docker login'
+                        sh 'docker login -u aggregatortech -p Westworld@1'
                         sh 'docker push aggregatortech/webtemplate'
                         
                }
