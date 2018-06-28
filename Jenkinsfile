@@ -6,7 +6,7 @@ pipeline {
             stage('Build') {
                steps {
                     withEnv(["HTTPS_PROXY=$proxy_url"]) {
-                   //will be builidfingh
+                   //will be builid fingh
                      echo "proxy configuration is $proxy_url"
                        echo "Platform configuration  is $platform_url"
                        echo 'Building code.. '
