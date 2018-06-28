@@ -11,3 +11,6 @@ dependencies {
     )
 
 }
+task publish(type: Exec)  dependsOn publishToDockerHub {
+
+}
