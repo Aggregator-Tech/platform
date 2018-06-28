@@ -24,6 +24,7 @@ pipeline {
                        echo 'Building code.. '
                         sh 'chmod +x gradlew'
                         sh './gradlew  -Dhttp.proxyHost=www-proxy.us.oracle.com -Dhttp.proxyPort=80 -Dhttps.proxyHost=www-proxy.us.oracle.com -Dhttps.proxyPort=80  distDocker'
+                        sh './gradlew  -Dhttp.proxyHost=www-proxy.us.oracle.com -Dhttp.proxyPort=80 -Dhttps.proxyHost=www-proxy.us.oracle.com -Dhttps.proxyPort=80  startDocker'
                }
                
                 }
