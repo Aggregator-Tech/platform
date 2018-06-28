@@ -37,7 +37,7 @@ pipeline {
              stage('publish') {
                 steps {
                     //will b e builidfingh
-                      e
+                     
                        echo 'Publish to repo.. '
                         sh 'chmod +x gradlew'
                         sh './gradlew  publish'
