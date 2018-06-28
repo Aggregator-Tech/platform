@@ -12,7 +12,7 @@ dependencies {
 
 }
 publish {
-    doLast() {
+    
          tasks.publishToDockerHub.execute()
-        }
+     
 }
