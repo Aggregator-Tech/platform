@@ -48,6 +48,7 @@ pipeline {
                         sh 'docker push aggregatortech/webtemplate'
                         
                }
+             }
             
 }
 }
