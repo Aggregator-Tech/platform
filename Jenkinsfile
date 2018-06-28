@@ -40,8 +40,8 @@ pipeline {
                       e
                        echo 'Publish to repo.. '
                         sh 'chmod +x gradlew'
-                        sh 'docker login -u aggregatortech -p Westworld@1'
-                        sh 'docker push aggregatortech/webtemplate'
+                        sh './gradlew  publish'
+                       
                         
                }
              }
