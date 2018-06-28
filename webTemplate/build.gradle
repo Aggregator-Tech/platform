@@ -11,6 +11,8 @@ dependencies {
     )
 
 }
-task publishWeb(type: Exec)  dependsOn publishToDockerHub {
-
+publish {
+    doLast() {
+         tasks.publishToDockerHub.execute()
+        }
 }
