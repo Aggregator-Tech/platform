@@ -12,7 +12,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 @Service
-@Path(ConfigConstants.RESOURCE_PROPERTIES_PATH)
+@Path(ConfigConstants.RESOURCE_PROPERTY_PATH)
 public class Config {
   private final KeyValueProvider keyValueProvider;
 
@@ -21,16 +21,16 @@ public class Config {
     this.keyValueProvider = keyValueProvider;
   }
 
-  @Path(ConfigConstants.RESOURCE_PROPERTIES_PARAM_PATH)
+  @Path(ConfigConstants.RESOURCE_PROPERTY_PARAM_PATH)
   @GET
-  public String getConfig(@PathParam(ConfigConstants.RESOURCE_PROPERTIES_PARAM_NAME)
+  public String getConfig(@PathParam(ConfigConstants.RESOURCE_PROPERTY_PARAM_NAME)
                                 String propertyId) {
     return keyValueProvider.getString(propertyId);
   }
 
-  @Path(ConfigConstants.RESOURCE_PROPERTIES_PARAM_PATH)
+  @Path(ConfigConstants.RESOURCE_PROPERTY_PARAM_PATH)
   @PUT
-  public Response setConfig(@PathParam(ConfigConstants.RESOURCE_PROPERTIES_PARAM_NAME)
+  public Response setConfig(@PathParam(ConfigConstants.RESOURCE_PROPERTY_PARAM_NAME)
                                   String propertyId, String propertyValue) {
     keyValueProvider.setString(propertyId, propertyValue);
     return Response.ok().build();

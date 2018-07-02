@@ -10,7 +10,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-@Path("{serviceName}/{version}/about")
+@Path("{serviceName}/about")
 @Service
 public class About {
 

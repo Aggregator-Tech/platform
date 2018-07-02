@@ -1,4 +1,4 @@
-task startDocker(type: Exec) {
+/*task startDocker(type: Exec) {
     environment("COMPOSE_PROJECT_NAME", "${project.name}")
     executable 'bash'
     args '-c', "docker-compose -f ${projectDir}/src/main/resources/docker-compose.yml up -d"
@@ -8,4 +8,4 @@ task stopDocker(type: Exec) {
     environment("COMPOSE_PROJECT_NAME", "${project.name}")
     executable 'bash'
     args '-c', "docker-compose -f ${projectDir}/src/main/resources/docker-compose.yml down"
-}
+}*/

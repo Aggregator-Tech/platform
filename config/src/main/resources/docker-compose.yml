@@ -6,4 +6,10 @@ services:
       servicePort: ${servicePort}
     ports:
       - "${servicePort}:${servicePort}"
-
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - /scratch/dockerVolumes1/db_redis:/data
+    entrypoint: ["redis-server","--appendonly", "yes"]

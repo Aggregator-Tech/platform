@@ -22,7 +22,7 @@ class ConfigWebTest extends Specification{
         String configId = "kafkaUrl";
         String configValue=  "kafkaHost:9092"
         ClientBuilder clientBuilder = ClientBuilder.newBuilder();
-        WebTarget target = clientBuilder.build().target(baseUrl).path("config/v1/properties")
+        WebTarget target = clientBuilder.build().target(baseUrl).path(ConfigConstants.RESOURCE_PROPERTY_PATH)
                 .path(configId)
 
         when:
