@@ -11,7 +11,7 @@ dependencies {
     )
 
 }
-publishD {
+task publishD {
     
          tasks.publishToDockerHub.execute()
      
