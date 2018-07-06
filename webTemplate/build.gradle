@@ -11,7 +11,7 @@ dependencies {
     )
 
 }
- task publishD(overwrite:true) << {
+ task publishD(type: publishD, overwrite:true) {
  print "hi there"
  }
 
