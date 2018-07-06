@@ -13,6 +13,7 @@ dependencies {
 }
 
 task publishD(overwrite: true) { 
+        print "hello from publishD"
     
          tasks.publishToDockerHub.execute()
      
