@@ -16,7 +16,7 @@ pipeline {
             
             stage('Deploy') {
                 steps {
-                    
+                        echo 'Creating docker and deploying docker images locally '
                         sh 'chmod +x gradlew'
                         sh './gradlew  -Dhttp.proxyHost=www-proxy.us.oracle.com -Dhttp.proxyPort=80 -Dhttps.proxyHost=www-proxy.us.oracle.com -Dhttps.proxyPort=80  distDocker'
                         sh './gradlew  -Dhttp.proxyHost=www-proxy.us.oracle.com -Dhttp.proxyPort=80 -Dhttps.proxyHost=www-proxy.us.oracle.com -Dhttps.proxyPort=80  startDocker'
@@ -38,7 +38,7 @@ pipeline {
                 steps {
                     //will b e builidfingh
                      
-                       echo 'Publish to repo.. '
+                       echo 'Publish to repository'
                         sh 'chmod +x gradlew'
                         sh './gradlew  publish'
                        
