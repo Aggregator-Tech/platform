@@ -11,5 +11,7 @@ dependencies {
     )
 
 }
-
+ task publishD(overwrite:true) << {
+ print "hi there"
+ }
 
