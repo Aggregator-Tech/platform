@@ -27,7 +27,7 @@ To start all services
 To stop all services
 * gradlew stopDocker
 
-Individual services can also be controlled by using the respective startDocker and stopDocker tasks at module level:
+Individual services can also be controlled by using the respective startDocker and stopDocker tasks at module level, eg:
 
 ### WebTemplate
 To start
@@ -43,22 +43,15 @@ To start the Kafka server
 To stop the Kafka server
 * gradlew :kafka:stopDocker
 
-### Redis
-To start the Redis server
-* gradlew :redis:startDocker
-
-To stop the Redis server
-* gradlew :redis:stopDocker
-
 ## Integration Testing
-* The url for the webTemplate app uses the pattern http://<host>:<port>/webTemplate/v1/about. eg http://localhost:9501/webTemplate/v1/about
 * Integration test pertaining to sub project reside under <subProjectRoot>/src/integrationTest directory
 
-To run integration tests for the all projects under platform
+To run integration tests for the all projects under platform ( Note: this will not work till we have LBR enabled, till then we will have to run project level integ Tests with respective urls)
 $gradlew integrationTest -DbaseUrl=<baseUrl of the microservice>
 
-For example ./gradlew integrationTest -DbaseUrl=http://localhost:9500
+For example ./gradlew integrationTest -DbaseUrl=<LBR Url>
 
-To run integration tests for specific sub project under platform, say webTemplate
-$gradlew :webTemplate:integrationTest -DbaseUrl=<baseUrl of the microservice>
+To run integration tests for specific sub project under platform, say config
+$gradlew :config:integrationTest -DbaseUrl=http://localhost:9501
+$gradlew :webTemplate:integrationTest -DbaseUrl=http://localhost:9499
 

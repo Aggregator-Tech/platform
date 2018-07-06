@@ -16,7 +16,7 @@ public class RedisClientFactory implements Factory<RedisClient> {
     RedisClient redisClient =
         RedisClient.create(
             RedisURI.Builder
-                .redis("localhost", 6379)
+                .redis("redis", 6379)
                 .withDatabase(0).build());
 //                .redis("redis-17291.c1.us-west-2-2.ec2.cloud.redislabs.com", 17291)
 //          .withDatabase(0).withPassword("jkyMnnc0ZxKMXKCzf2ieilsTrqbwIkIZ").build());

@@ -4,7 +4,7 @@ ext {
 }
 
 task distDocker(type: Exec) {
-    dependsOn installDist
+    dependsOn distTar
     executable 'sh'
     args '-c', "docker build -t=${namespace}/${repository}:${tag} ."
 }

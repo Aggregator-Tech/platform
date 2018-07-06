@@ -8,4 +8,5 @@ include 'data'
 include 'webTemplate'
 include 'redis'
 include 'kafkaAdmin'
+include 'config'
 

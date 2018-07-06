@@ -1,5 +1,5 @@
 ext {
-    servicePort='9499'
+    servicePort='9501'
 }
 
 apply from: "$rootProject.projectDir/gradle/script/web.gradle"
@@ -7,7 +7,8 @@ apply from: "$rootProject.projectDir/gradle/script/docker.gradle"
 
 dependencies {
     implementation(
-            project(':web')
+            project(':web'),
+            project(':data')
     )
 
 }
