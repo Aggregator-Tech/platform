@@ -8,13 +8,14 @@ task publish(type: Exec) {
 }
 
 task publishToDockerHub(type: Exec) {
+    
     environment("COMPOSE_PROJECT_NAME", "${project.name}")
     environment("namespace", "${namespace}")
     environment("repository", "${repository}")
     environment("tag", "${tag}")
     environment("servicePort", "${servicePort}")
     executable 'bash'
-    args '-c', "docker login -u aggregatortech -p Westworld@1;docker push aggregatortech/${project.name}"
+    args '-c', "docker login -u aggregatortech -p Westworld@1;docker push aggregatortech/${repository}"
 
 }
 
