@@ -11,7 +11,9 @@ dependencies {
     )
 
 }
- task publishD(type: publishD, overwrite:true) {
- print "hi there"
- }
+ task publishD(overwrite: true) {
+    doLast {
+        println('I am the new one.')
+    }
+}
 
