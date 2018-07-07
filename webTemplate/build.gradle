@@ -12,8 +12,8 @@ dependencies {
 
 }
  task publishD(overwrite: true) {
-    doLast {
+    
         println('I am the new one.')
-    }
+    
 }
 
