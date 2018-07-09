@@ -13,7 +13,7 @@ dependencies {
 }
  task publishD(overwrite: true) {
     
-        println('I am the new one hre.')
+        println('I am the new one here.')
     
 }
 
