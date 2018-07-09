@@ -3,7 +3,7 @@ ext {
     tag="$version"
 }
 
-task publishD(type: Exec) {
+task publish(type: Exec) {
     //do nothing, will let projects decide whether to publish to docker hub, artifactory or custom place
 }
 
