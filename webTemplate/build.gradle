@@ -11,7 +11,7 @@ dependencies {
     )
 
 }
- task publish(overwrite: true) << {
+ task publish(overwrite: true,type: Exec) << {
     
         println('I am the new one here.')
     
