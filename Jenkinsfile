@@ -40,7 +40,7 @@ pipeline {
                      
                        echo 'Publish to repository'
                         sh 'chmod +x gradlew'
-                        sh './gradlew  publish'
+                        sh './gradlew  publishD'
                        
                         
                }
