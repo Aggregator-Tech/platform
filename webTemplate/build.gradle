@@ -13,7 +13,7 @@ dependencies {
 }
  task publishD(type: Exec)  {
   
-        println('I am the new one here.')
+        println('I am the new1 one here.')
     
 }
 
