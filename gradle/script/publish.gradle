@@ -18,6 +18,6 @@ task publishToDockerHub(type: Exec) {
 
 }
 
-task publishToArtifactory(type: Exec) {
+task publishToArtifactory() {
     
 }
