@@ -19,11 +19,5 @@ task publishToDockerHub(type: Exec) {
 }
 
 task publishToArtifactory(type: Exec) {
-    environment("COMPOSE_PROJECT_NAME", "${project.name}")
-    environment("namespace", "${namespace}")
-    environment("repository", "${repository}")
-    environment("tag", "${tag}")
-    environment("servicePort", "${servicePort}")
-    executable 'bash'
-    args '-c', "docker-compose -f ${projectDir}/src/main/resources/docker-compose.yml down"
+    
 }
