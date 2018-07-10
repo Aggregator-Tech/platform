@@ -12,6 +12,13 @@ dependencies {
     )
 
 }
+task publishToArtifactory(overwrite:true) {
+
+doLast {
+   println "i am new Artifactory command"
+}
+
+}
 
 
 
