@@ -4,7 +4,7 @@ ext {
 
 apply from: "$rootProject.projectDir/gradle/script/web.gradle"
 apply from: "$rootProject.projectDir/gradle/script/docker.gradle"
-apply from: "$rootProject.projectDir/gradle/script/publish.gradle"
+
 
 dependencies {
     implementation(
