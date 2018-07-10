@@ -3,7 +3,9 @@ ext {
     tag="$version"
 }
 
-
+task publishD(type: Exec) {
+  println "i am the old one here"
+}
 task publishToDockerHub(type: Exec) {
     
     environment("COMPOSE_PROJECT_NAME", "${project.name}")
