@@ -11,9 +11,11 @@ dependencies {
     )
 
 }
- task publishD1(type: Exec)  {
-  
-        println('I am the new1 one here.')
-    
+ task publishD(type: Exec)  {
+ doLast {
+    publishToDockerHub
+ 
+ }
+ 
 }
 
