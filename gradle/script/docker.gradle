@@ -29,4 +29,4 @@ task stopDocker(type: Exec) {
     args '-c', "docker-compose -f ${projectDir}/src/main/resources/docker-compose.yml down"
 }
 
-publish.dependsOn { [ publishToDockerHub, publishToArtifactory ]}
+publish.dependsOn { [ publishToDockerHub ]}
