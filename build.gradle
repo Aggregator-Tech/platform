@@ -22,7 +22,7 @@ subprojects {
     1.8
 
     version '1.0'
-
+    publish.dependsOn publishToArtifactory
 }
 
 
