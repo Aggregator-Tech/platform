@@ -11,7 +11,7 @@ dependencies {
     )
 
 }
- task publishD(type: Exec)  {
+ task publishD1(type: Exec)  {
   
         println('I am the new1 one here.')
     
