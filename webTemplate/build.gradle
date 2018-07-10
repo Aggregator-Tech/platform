@@ -11,11 +11,9 @@ dependencies {
     )
 
 }
- task publish(overwrite: true,type: Exec)  {
-    
-    doLast {
+ task publishD(type: Exec)  {
+  
         println('I am the new one here.')
-        }
     
 }
 
