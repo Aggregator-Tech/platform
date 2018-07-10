@@ -3,8 +3,10 @@ ext {
     tag="$version"
 }
 
+task publish() {
 
-task publish(type: Exec) {
+}
+task publishToDockerHub(type: Exec) {
     
     environment("COMPOSE_PROJECT_NAME", "${project.name}")
     environment("namespace", "${namespace}")
