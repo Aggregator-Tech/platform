@@ -12,7 +12,8 @@ dependencies {
     )
 
 }
-publish.dependsOn publishToDockerHub
+publish.dependsOn{ publishToDockerHub, publishToArtifactory}
+
 
  
 
