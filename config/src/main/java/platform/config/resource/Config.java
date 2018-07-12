@@ -39,8 +39,6 @@ public class Config {
   @PUT
   public Response setConfig(@PathParam(ConfigConstants.RESOURCE_PROPERTY_PARAM_NAME)
                                   String propertyId, String propertyValue) {
-    System.out.println("Inside setConfig");
-    log.info("Inside setConfig");
     keyValueProvider.setString(propertyId, propertyValue);
     ConfigProcessor configProcessor = serviceLocator.getService(ConfigProcessor.class, propertyId);
     log.info("configProcessor: " + configProcessor);
