@@ -8,6 +8,7 @@ apply from: "$rootProject.projectDir/gradle/script/docker.gradle"
 dependencies {
     implementation(
             project(':web'),
+            project(':kafkaAdmin'),
             project(':data')
     )
 

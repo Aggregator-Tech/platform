@@ -11,12 +11,10 @@ import javax.inject.Inject;
 
 @Service(name = DataRepositoryType.REDIS)
 public class RedisKeyValueProvider implements KeyValueProvider {
-  RedisClient redisClient;
   StatefulRedisConnection<String, String> statefulRedisConnection;
 
   @Inject
   public RedisKeyValueProvider(RedisClient redisClient) {
-    this.redisClient = redisClient;
     statefulRedisConnection = redisClient.connect();
   }
 

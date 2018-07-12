@@ -1,6 +1,8 @@
 package platform.kafka.admin.impl;
 
 
+import org.glassfish.hk2.api.PerLookup;
+import org.jvnet.hk2.annotations.Service;
 import platform.kafka.admin.TopicManager;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.AdminClientConfig;
@@ -17,6 +19,8 @@ import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Service
+@PerLookup
 class TopicManagerImpl implements TopicManager {
 
   volatile AdminClient adminClient;
@@ -24,9 +28,10 @@ class TopicManagerImpl implements TopicManager {
 
   public static void main(String[] args) {
     TopicManagerImpl topicManager = new TopicManagerImpl();
+    topicManager.setKafkaBootstrapServer("http://slc12nog:9092");
     System.out.println("Getting list of topics...");
     System.out.println("List of topics: " + topicManager.getTopics());
-//    topicManager.createTopic("second",1 , (short)1);
+//    topicManager.createTopic("testTopic1",1 , (short)1);
 //    topicManager.deleteTopic("second");
 //    System.out.println("List of topics: " + topicManager.getTopics());
   }

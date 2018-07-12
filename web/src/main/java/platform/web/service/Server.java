@@ -14,7 +14,6 @@ import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
 import java.io.IOException;
 import java.net.URI;
-import java.util.Optional;
 
 
 public class Server {
@@ -37,7 +36,7 @@ public class Server {
    */
   public HttpServer startServer() {
     // create a resource config that scans for JAX-RS resources and providers
-    final ResourceConfig rc = new ResourceConfig().packages(Constants.PLATFORM_PACKAGE);
+    final ResourceConfig rc = new ResourceConfig().packages(Constants.PACKAGE_PLATFORM);
     rc.register(JacksonJaxbJsonProvider.class, MessageBodyReader.class, MessageBodyWriter.class);
 
     // create and start a new instance of grizzly http server
