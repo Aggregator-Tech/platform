@@ -31,8 +31,10 @@ public class KafkaConfigProcessor implements ConfigProcessor {
       String kafkaUrl = serviceLocator.getService(Config.class).getConfig(PROPERTY_KAFKA_URL);
       topicManager.setKafkaBootstrapServer(kafkaUrl);
       //TODO Make createTopic parameters dynamic
-      topicManager.createTopic(TOPIC_CONFIG_EVENTS, 1, (short) 1);
-      log.info("Created topic: " + TOPIC_CONFIG_EVENTS);
+      if (!topicManager.getTopics().contains(TOPIC_CONFIG_EVENTS)) {
+        topicManager.createTopic(TOPIC_CONFIG_EVENTS, 1, (short) 1);
+        log.info("Created topic: " + TOPIC_CONFIG_EVENTS);
+      }
       log.info("List of topics: " + topicManager.getTopics());
     }).start();
   }
