@@ -12,7 +12,7 @@ public class EventProducerImpl implements EventProducer {
 
   public static void main(String[] args) {
     EventProducer eventProducer = new EventProducerImpl();
-    eventProducer.publish("second", "event1");
+    eventProducer.publish("configEvents", "{\"key1\":\"value1\"}");
   }
 
   @Override

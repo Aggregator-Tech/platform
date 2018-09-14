@@ -6,6 +6,8 @@ services:
       servicePort: ${servicePort}
     ports:
       - "${servicePort}:${servicePort}"
+    volumes:
+      - /scratch/dockerVolumes1/log/${repository}:/log
   redis:
     image: redis
     ports:

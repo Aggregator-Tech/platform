@@ -19,7 +19,7 @@ class ConfigWebTest extends Specification{
     }
     def "test Config Service"() {
         setup:
-        String configId = "kafkaUrl";
+        String configId = ConfigConstants.PROPERTY_KAFKA_URL;
         String configValue=  "kafkaHost:9092"
         ClientBuilder clientBuilder = ClientBuilder.newBuilder();
         WebTarget target = clientBuilder.build().target(baseUrl).path(ConfigConstants.RESOURCE_PROPERTY_PATH)

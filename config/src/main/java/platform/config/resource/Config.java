@@ -1,7 +1,10 @@
 package platform.config.resource;
 
+import org.glassfish.hk2.api.ServiceLocator;
 import org.jvnet.hk2.annotations.Service;
+import platform.common.io.log.Log;
 import platform.config.ConfigConstants;
+import platform.config.processor.ConfigProcessor;
 import platform.data.provider.KeyValueProvider;
 
 import javax.inject.Inject;
@@ -15,10 +18,14 @@ import javax.ws.rs.core.Response;
 @Path(ConfigConstants.RESOURCE_PROPERTY_PATH)
 public class Config {
   private final KeyValueProvider keyValueProvider;
+  private final ServiceLocator serviceLocator;
+  private final Log log;
 
   @Inject
-  public Config(KeyValueProvider keyValueProvider) {
+  public Config(ServiceLocator serviceLocator, KeyValueProvider keyValueProvider, Log log) {
+    this.serviceLocator = serviceLocator;
     this.keyValueProvider = keyValueProvider;
+    this.log = log;
   }
 
   @Path(ConfigConstants.RESOURCE_PROPERTY_PARAM_PATH)
@@ -33,6 +40,11 @@ public class Config {
   public Response setConfig(@PathParam(ConfigConstants.RESOURCE_PROPERTY_PARAM_NAME)
                                   String propertyId, String propertyValue) {
     keyValueProvider.setString(propertyId, propertyValue);
+    ConfigProcessor configProcessor = serviceLocator.getService(ConfigProcessor.class, propertyId);
+    log.info("configProcessor: " + configProcessor);
+    if (configProcessor != null) {
+      configProcessor.process(propertyId, propertyValue);
+    }
     return Response.ok().build();
   }
 }
