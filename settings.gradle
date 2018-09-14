@@ -9,4 +9,5 @@ include 'webTemplate'
 include 'redis'
 include 'kafkaAdmin'
 include 'config'
+include 'serverlessTemplate'
 
